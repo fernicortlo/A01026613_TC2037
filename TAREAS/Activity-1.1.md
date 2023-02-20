@@ -14,17 +14,16 @@ https://www.overleaf.com/learn/latex/List_of_Greek_letters_and_math_symbols
 
     <span style="color: red">_**SOLUTION**_
 
-    I. **Basis:**
+    I. **Basis:**  $P(x) = {\empty}$
 
-    II. **Recursive Step:**
+    II. **Recursive Step:** For any non-empty sets of $P(x)$, $P(x)$ can be defined as the union of two sets:
+    $P(x) = $
 
-    III. **Closure:**
+    III. **Closure:** 
 
-
-
+<br>  <br/>
 
 2. Prove by induction on $n$ that:
-
     $\sum_{i=0}^{n}i^3 = \frac{n^2(n+1)^2}{4}$
 
     <span style="color: red">_**SOLUTION:**_
@@ -32,10 +31,12 @@ https://www.overleaf.com/learn/latex/List_of_Greek_letters_and_math_symbols
     I. **Basis:** for $n \in o$
 
     $\sum_{i=0}^{0}i^3 = \frac{0^2(0+1)^2}{4} = 0$
+<br>  <br/>
 
     II.**Inductive Hypothesis:** For $n = k$
 
     $\sum_{i=0}^{k}i^3 = \frac{k^2(k+1)^2}{4}$
+<br>  <br/>
 
     III. **Inductive Step**: For $n = (k+1)$
 
@@ -52,37 +53,36 @@ https://www.overleaf.com/learn/latex/List_of_Greek_letters_and_math_symbols
     $\frac{(k+1)^2+[k^2+4k+4]}{4} = \frac{(k+1)^2((k+2)^2}{4}$
 
     <span style="color: pink">$\frac{(k+1)^2+(k^2+4k+4)}{4} = \frac{(k+1)^2(k^2+4k+4)}{4}$
-
-    III. **Closure:** By induction the given equation holds true for all non-negative integers.
-
-
-
+<br>  <br/>
+    III. **Closure:** 
+    By induction the given equation holds true for all non-negative integers.
+<br>  <br/>
 
 3. Using the tree below, give the values of each of the items:
 ![Tree image](sample_tree.png)
 
     a. the depth of the tree
 
-    The depth of the tree is $4$
+    <span style="color: pink">The depth of the tree is $4$
 
     b. the ancestors of x18
 
-    $x18$ has $4$ ancestors, $x15$, $x10$, $x4$, $x1$
+    <span style="color: pink">$x18$ has $4$ ancestors, $x15$, $x10$, $x4$, $x1$
 
     c. the internal nodes of the tree
 
-    there are nine internal nodes: $x1$, $x2$, $x3$, $x4$, $x5$, $x7$, $x10$, $x13$ and $x15$
+    <span style="color: pink">there are nine internal nodes: $x1$, $x2$, $x3$, $x4$, $x5$, $x7$, $x10$, $x13$ and $x15$
 
     d. the length of the path from $x3$ to $x14$
 
-    the lenght of the path is $3$. 
+    <span style="color: pink"> the lenght of the path is $3$. 
 
-    $x3$ -> $x7$ -> $x14$
+    <span style="color: pink">$x3$ -> $x7$ -> $x14$
 
     e. the vertex that is the parent of x16
 
-    the vertex of the parent of x16 is $x10$
+    <span style="color: pink"> the vertex of the parent of x16 is $x10$
 
     f. the vertices children of x7
 
-    the vertices children of $x7$ are 
+    <span style="color: pink"> the vertices children of $x7$ are 
