@@ -17,9 +17,19 @@ https://www.overleaf.com/learn/latex/List_of_Greek_letters_and_math_symbols
     I. **Basis:**  $P(x) = {\empty}$
 
     II. **Recursive Step:** For any non-empty sets of $P(x)$, $P(x)$ can be defined as the union of two sets:
-    $P(x) = $
 
-    III. **Closure:** 
+   <span style="color: pink"> Where:
+
+    $a$ is the subset of $P(x)$
+
+    $b$ is a subset of $P(x)$ minus $a$ 
+
+    $P(y)$ being $P(X)$ before adding $a$.
+    
+    <span style="color: pink">  $P(x) = $ \{ $a$ $\cup$ $b$ $|$ $b$ $\in P(y)$\} $a$ $P(y)$
+
+
+    III. **Closure:** A number $n$ $\in$ $P(x)$  only if it can be obtained from the basis using a finite number of applications.
 
 <br>  <br/>
 
