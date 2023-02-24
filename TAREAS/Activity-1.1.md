@@ -14,19 +14,23 @@ https://www.overleaf.com/learn/latex/List_of_Greek_letters_and_math_symbols
 
     <span style="color: red">_**SOLUTION**_
 
-    I. **Basis:**  $P(x) = {\empty}$
+    I. **Basis:**  $P(x)$ = $\{\empty\}$
 
     II. **Recursive Step:** For any non-empty sets of $P(x)$, $P(x)$ can be defined as the union of two sets:
 
    <span style="color: pink"> Where:
 
-    $a$ is the subset of $P(x)$
+    $P(x)$ $=$ $P ( A \cup B)$ and $a \subset A$,  $b \subset B$ 
 
-    $b$ is a subset of $P(x)$ minus $a$ 
+    We can recursively define the function of the power set of x as:
 
-    $P(y)$ being $P(X)$ before adding $a$.
+    $P ( A \cup B)$ = $\{a \cup b : (a,b) \in P(A) \times P(B)\}$
+
+    Where we state that we can choose any subset of A or B and take their union to get the power set. Using this definition we can simplify and say:
+
+    <span style="color: pink"> $ |P ( A \cup B) |$ $=$ $|P(A)|$ $\cdot$  $|P(B)|$
+
     
-    <span style="color: pink">  $P(x) = $ \{ $a$ $\cup$ $b$ $|$ $b$ $\in P(y)$\} $a$ $P(y)$
 
 
     III. **Closure:** A number $n$ $\in$ $P(x)$  only if it can be obtained from the basis using a finite number of applications.
@@ -52,15 +56,15 @@ https://www.overleaf.com/learn/latex/List_of_Greek_letters_and_math_symbols
 
     $\sum_{i=0}^{k+1}i^3 = \frac{k+1^2((k+1)+1)^2}{4}$
 
-    $\sum_{i=0}^{k}{k+1}^3 = \frac{(k+1)^2((k+1+1)^2}{4}$ 
+    $\sum_{i=0}^{k}{k+1}^3 = \frac{(k+1)^2(k+1+1)^2}{4}$ 
 
-    $\frac{k^2(k+1)^2}{4}+(k+1)^3 = \frac{(k+1)^2((k+2)^2}{4}$ 
+    $\frac{k^2(k+1)^2}{4}+(k+1)^3 = \frac{(k+1)^2(k+2)^2}{4}$ 
 
-    $\frac{k^2(k+1)^2+4(k+1)^3}{4} = \frac{(k+1)^2((k+2)^2}{4}$
+    $\frac{k^2(k+1)^2+4(k+1)^3}{4} = \frac{(k+1)^2(k+2)^2}{4}$
 
-    $\frac{(k+1)^2+[k^2+4(k+1)]}{4} = \frac{(k+1)^2((k+2)^2}{4}$
+    $\frac{(k+1)^2+(k^2+4(k+1)}{4} = \frac{(k+1)^2(k+2)^2}{4}$
 
-    $\frac{(k+1)^2+[k^2+4k+4]}{4} = \frac{(k+1)^2((k+2)^2}{4}$
+    $\frac{(k+1)^2+(k^2+4k+4)}{4} = \frac{(k+1)^2(k+2)^2}{4}$
 
     <span style="color: pink">$\frac{(k+1)^2+(k^2+4k+4)}{4} = \frac{(k+1)^2(k^2+4k+4)}{4}$
 <br>  <br/>
