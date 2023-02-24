@@ -19,19 +19,11 @@ https://www.overleaf.com/learn/latex/List_of_Greek_letters_and_math_symbols
     II. **Recursive Step:** For any non-empty sets of $P(x)$, $P(x)$ can be defined as the union of two sets:
 
    <span style="color: pink"> Where:
-
-    $P(x)$ $=$ $P ( A \cup B)$ and $a \subset A$,  $b \subset B$ 
-
-    We can recursively define the function of the power set of x as:
-
-    $P ( A \cup B)$ = $\{a \cup b : (a,b) \in P(A) \times P(B)\}$
-
-    Where we state that we can choose any subset of A or B and take their union to get the power set. Using this definition we can simplify and say:
-
-    <span style="color: pink"> $ |P ( A \cup B) |$ $=$ $|P(A)|$ $\cdot$  $|P(B)|$
-
+  
+   $P(x)$ is the power set of a set and it conteins the subset $a$ and the subset $b$. Denote $P(y)$ as $P(x-1)$  
     
-
+    <span style="color: pink">  $
+    $P(x) = $ \{ $a$ $\cup$ $b$ $|$ $b$ $\in$ $P(y)$ \}  $a$ $P(y)$ 
 
     III. **Closure:** A number $n$ $\in$ $P(x)$  only if it can be obtained from the basis using a finite number of applications.
 
