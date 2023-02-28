@@ -2,11 +2,11 @@
 ; Basic syntax for conditional statements 
 
 #lang racket
-(provide leap? month-days next day)
+(provide leap? month-days next-day)
 
-(define(leap? year)
+(define (leap? year)
     (if (= 0 (remainder year 4))
-        (if (= 0 (remainder year 100))
+        (if (= 0(remainder year 100))
     ; The predicate 'zero?' can be used to compare if a value is 0
         (if (zero?(remainder year 400))
             #t
@@ -21,10 +21,10 @@
             (zero? (remainder year 400)))))
 
 ;function to return the number of days
-(define (month-days month)
+(define (month-days month year)
     (case month
-        [(4 6 9 11) 10]
-        [(2) (if (leap?_year)29 28)]
+        [(4 6 9 11) 30]
+        [(2) (if (leap? year)29 28)]
         [else 31]))
 
 ;function to returh the date of the day after the input provided
