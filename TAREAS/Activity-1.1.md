@@ -22,8 +22,7 @@ https://www.overleaf.com/learn/latex/List_of_Greek_letters_and_math_symbols
   
    $P(x)$ is the power set of a set and it conteins the subset $a$ and the subset $b$. Denote $P(y)$ as $P(x-1)$  
     
-    <span style="color: pink">  $
-    $P(x) = $ \{ $a$ $\cup$ $b$ $|$ $b$ $\in$ $P(y)$ \}  $a$ $P(y)$ 
+    <span style="color: pink">$P(x) = $ \{ $a$ $\cup$ $b$ $|$ $b$ $\in$ $P(y)$ \}  $a$ $P(y)$ 
 
     III. **Closure:** A number $n$ $\in$ $P(x)$  only if it can be obtained from the basis using a finite number of applications.
 
