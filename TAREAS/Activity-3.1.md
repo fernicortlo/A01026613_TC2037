@@ -116,3 +116,7 @@ III. **Closure:** A string $i+1$ or $j+1$ $\in$ the set only if it can be obtain
    string $w \in \Sigma$
 
     _**SOLUTION:**_
+
+I. **Basis:**
+
+II. **Inductive Step:**
