@@ -4,8 +4,6 @@
 
 ;the function 'pollito-lyrics' will print the lyrics to the song 'Pollito Pio' using a recurvise function.
  
-
-
 ;we define the function
 (define (pollito-lyrics)
   ;we define the lists of animals and sounds that will be used 
