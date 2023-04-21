@@ -46,7 +46,7 @@ defmodule TecList do
   def merge_sort(list) when length(list) <= 2, do: list
 
   def merge_sort(list) do
-    len = lenght(list)
+    len = length(list)
     middle = div(len, 2)
    {list1, list2} = Enum.split(list, middle)
    merge_lists(merge_sort(list1), merge_sort(list2))
@@ -67,5 +67,11 @@ defmodule TecList do
   def do_merge_lists([head1 | tail1], [head2 | tail2], res) when head1 >= head2,
     do: do_merge_lists([head1 | tail1], tail2, [head2 | res])
 
+  @doc """
+  Invert the pairs of a list of tuples
+  """
+  def invert_pairs(list), do: do_invert_pairs(list, [])
+  defp do_invert_pairs([], res), do: Enum.reverse(res)
+  defp do_invert_pairs([{a,b} | tail], res), do: do_invert_pairs(tail, [{b,a} | res])
 
 end # end defmodule
