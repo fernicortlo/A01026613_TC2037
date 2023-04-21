@@ -74,4 +74,10 @@ defmodule TecList do
   defp do_invert_pairs([], res), do: Enum.reverse(res)
   defp do_invert_pairs([{a,b} | tail], res), do: do_invert_pairs(tail, [{b,a} | res])
 
+  @doc """
+  A function that converts farenheit to celsius
+  """
+  def farenheit_to_celsus(f), do: (f-32)*5/9
+
+
 end # end defmodule
