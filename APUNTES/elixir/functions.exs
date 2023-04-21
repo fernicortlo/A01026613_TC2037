@@ -1,6 +1,6 @@
-#Functions to work with lists in Elixir
-# Fer Cortés
-# 2023-04-21
+#   Functions to work with lists in Elixir
+#   Fer Cortés
+#   2023-04-21
 
 defmodule TecList do
 
@@ -20,6 +20,52 @@ defmodule TecList do
   """
   def add_list([]), do: 0
   def add_list(list), do: hd(list) + add_list(tl(list))
+
+  @doc """
+  Using pattern match to deconstruct a list
+  """
+  def add_list2([]), do: 0
+  def add_list2([head | tail]), do: head + add_list2(tail)
+
+  @doc """
+  Using tail recursion
+  """
+  def add_list3(list), do: do_add_list(list, 0)
+  defp do_add_list([head | tail], res), do: do_add_list(tail,head + res)
+
+  @doc """
+  Return a new list with the square root of all numbers in a list
+  """
+
+  def sqrt_list(list), do: do_sqrt_list(list, [])
+
+  defp do_sqrt_list([], res), do: Enum.reverse(res) #enum is a module that has reverse function
+  defp do_sqrt_list([head | tail], res), do: do_sqrt_list(tail, [:math.sqrt(head) | res])
+  # :math.sqrt is a function that returns the square root of a number
+
+  def merge_sort(list) when length(list) <= 2, do: list
+
+  def merge_sort(list) do
+    len = lenght(list)
+    middle = div(len, 2)
+   {list1, list2} = Enum.split(list, middle)
+   merge_lists(merge_sort(list1), merge_sort(list2))
+  end
+
+  @doc """
+  Join the elements of two orderd lists into a single ordered list
+  """
+
+  def merge_lists(list1, list2), do: do_merge_lists(list1, list2, [])
+
+  def do_merge_lists([], list2, res), do: Enum.reverse(res) ++ list2
+  def do_merge_lists(list1, [], res), do: Enum.reverse(res) ++ list1
+
+  def do_merge_lists([head1 | tail1], [head2 | tail2], res) when head1 < head2,
+    do: do_merge_lists(tail1, [head2 | tail2], [head1 | res])
+
+  def do_merge_lists([head1 | tail1], [head2 | tail2], res) when head1 >= head2,
+    do: do_merge_lists([head1 | tail1], tail2, [head2 | res])
 
 
 end # end defmodule
