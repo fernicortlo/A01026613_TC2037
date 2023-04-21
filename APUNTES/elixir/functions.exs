@@ -86,5 +86,21 @@ defmodule TecList do
   def sign(n) when n > 0, do: 1
   def sign(n) when n == 0, do: 0
 
+  @doc """
+  A function that duplicates the elements of a list
+  """
+
+  def duplicate(list), do: do_duplicate(list, [])
+  defp do_duplicate([], res), do: Enum.reverse(res)
+  defp do_duplicate([head | tail], res), do: do_duplicate(tail, [head, head | res])
+
+  @doc """
+  A fucntion that returns only the positives of a list
+  """
+  def positives(list), do: do_positives(list, [])
+  defp do_positives([], res), do: Enum.reverse(res)
+  defp do_positives([head | tail], res) when head > 0, do: do_positives(tail, [head | res])
+  defp do_positives([head | tail], res) when head <= 0, do: do_positives(tail, res)
+
 
 end # end defmodule
