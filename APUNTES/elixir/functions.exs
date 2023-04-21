@@ -79,5 +79,12 @@ defmodule TecList do
   """
   def farenheit_to_celsus(f), do: (f-32)*5/9
 
+  @doc """
+  A function that returns -1 is the number is negative, 1 if it is positive < 0 and 0 if it is 0
+  """
+  def sign(n) when n < 0, do: -1
+  def sign(n) when n > 0, do: 1
+  def sign(n) when n == 0, do: 0
+
 
 end # end defmodule
