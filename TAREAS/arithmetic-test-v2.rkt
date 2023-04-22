@@ -11,7 +11,7 @@
 (require rackunit)
 (require rackunit/text-ui)
 ; Import necesary to view the test results
-(require "../actividades/02_token_list.rkt")
+(require "./02_token_list.rkt")
 
 (define test-arithmetic-lexer
     (test-suite

@@ -22,49 +22,47 @@
 
 (define (arithmetic-lexer strng)
   " Evaluate an arithmetic expression "
-  (validate-dfa strng (dfa delta-arithmetic 'start '(int float exp id spa))))
+  (validate-dfa strng (dfa delta-arithmetic 'start '(int float exp id spa op sign dot e e_sign open_p close_p))))
 
 ; Function to evaluate a string using a DFA
 ; Receives the string to test and a structure for a DFA
 (define (validate-dfa input dfa-def)
   (let loop
-      ; Convert the string into a list of chars
-      ([char-list (string->list input)]
-       ; Get the initial state from the DFA definition
+; Convert the string into a list of chars
+      ([char-list(string->list input)]
+; Get the initial state from the DFA definition
        [state (dfa-initial dfa-def)]
-       ; The characters that will be forming the token
+; The characters that will be forming the token
        [current-token '()]
-       ; The list to be returned with all the types of tokens found
+; The list to be returned with all the types of tokens found
        [tokens '()])
+; This conditional checks if the list of characters is empty,
     (cond
-      ; Check if the final state is in the list of acceptable states
       [(empty? char-list)
+;  if it is, it checks if the current state is an accept state
        (if (member state (dfa-accept dfa-def))
+; if it is a valid state, it returns the list of tokens
            (reverse (cons (cons state (list->string (reverse current-token))) tokens))
+;if it is not, it returns an error
            'invalid)]
-           
+; If the list of characters is not empty, it calls a recursive function
       [else
-       ; Extract the two values returned by the transition function
        (let-values
-           ; var1 var2 Call to the transition function
+; The function returns a pair of values: the new state and the token found
            ([(new-state found) ((dfa-transition dfa-def) state (car char-list))])
-         (loop
-          ; New list
-          (cdr char-list)
-          ; New state, obtained by calling the transition function
-          new-state
-          ; New list of tokens. Add a token only if it has already been identified
-          (if found
-              (cons (cons (list->string (reverse current-token)) found) tokens)
-              ; (cons (cons found (list->string (reverse current-token))) tokens)
-              tokens)
-          ; Reset the current-token list if necessary
-          (if found '() (cons (car char-list) current-token))))])))
-
-
+ ;  If the token is finished, it adds it to the list of tokens and calls the recursive function again
+         (if found
+             (if (not (empty? current-token))
+                 (loop (cdr char-list) new-state '() 
+                       (cons (cons found(list->string (reverse current-token))) tokens))
+                 (loop (cdr char-list) new-state (cons (car char-list) current-token) tokens))
+; If the token is not finished, it calls the recursive function again
+             (loop (cdr char-list) new-state (cons (car char-list) current-token) tokens)))])))
+    
 (define (char-operator? char)
   " Check if the character is considered an operator "
-  (member char (string->list "=+-*/")))
+  (member char' (#\+ #\- #\* #\/ #\^)))
+  
 
 ; Accept numbers of different types
 ; Star state: 'start
@@ -80,10 +78,9 @@
        [(char-alphabetic? char) (values 'id #f)]
        [(eq? char #\_) (values 'id #f)]
        [(char-whitespace? char) (values 'spa #f)] ; Add this line
-       [(eq? char #\( ) (values 'open_parenthesis #f)]
-       [(eq? char #\))  (values 'close_parenthesis #f)]
-       [else (values 'inv #f)])]
-       
+      ;  [(eq? char #\( ) (values 'open_p #f)]
+      ;  [(eq? char #\))  (values 'close_p #f)]
+       [else (values 'inv #f)])]    
     [(eq? state 'sign)
      (cond
        [(char-numeric? char) (values 'int #f)]
@@ -94,8 +91,9 @@
        [(eq? char #\.) (values 'dot #f)]
        [(or (eq? char #\e) (eq? char #\E)) (values 'e #f)]
        [(char-operator? char) (values 'op 'int)]
-       [(eq? char #\() (values 'open_parenthesis #f)]
-       [(eq? char #\)) (values 'close_parenthesis #f)]
+      ;  [(eq? char #\() (values 'open_p #f)]
+      ;  [(eq? char #\)) (values 'close_p #f)]
+       [(char-whitespace? char) (values 'spa 'int)]
        [else (values 'inv #f)])]
     [(eq? state 'dot)
      (cond
@@ -106,8 +104,9 @@
        [(char-numeric? char) (values 'float #f)]
        [(or (eq? char #\e) (eq? char #\E)) (values 'e #f)]
        [(char-operator? char) (values 'op 'float)]
-       [(eq? char #\( ) (values 'open_parenthesis #f)]
-       [(eq? char #\)) (values 'close_parenthesis #f)]
+       [(char-whitespace? char) (values 'spa 'float)]
+      ;  [(eq? char #\( ) (values 'open_p #f)]
+      ;  [(eq? char #\)) (values 'close_p #f)]
        [else (values 'inv #f)])]
     [(eq? state 'e)
      (cond
@@ -122,8 +121,9 @@
      (cond
        [(char-numeric? char) (values 'exp #f)]
        [(char-operator? char) (values 'op 'exp)]
-       [(eq? char #\() (values 'open_parenthesis #f)]
-       [(eq? char #\)) (values 'close_parenthesis #f)]
+       [(char-whitespace? char) (values 'spa 'exp)]
+      ;  [(eq? char #\() (values 'open_p #f)]
+      ;  [(eq? char #\)) (values 'close_p #f)]
        [else (values 'inv #f)])]
     [(eq? state 'id)
      (cond
@@ -131,39 +131,48 @@
        [(char-alphabetic? char) (values 'id #f)]
        [(eq? char #\_) (values 'id #f)]
        [(char-operator? char) (values 'op 'id)]
-       [(eq? char #\() (values 'open_parenthesis #f)]
-       [(eq? char #\)) (values 'close_parenthesis #f)]
+        [(char-whitespace? char) (values 'spa 'id)]
        [else (values 'inv #f)])]
     [(eq? state 'op)
      (cond
        [(char-numeric? char) (values 'int 'op)]
        [(or (eq? char #\+) (eq? char #\-)) (values 'sign 'op)]
        [(char-alphabetic? char) (values 'id 'op)]
-       [(eq? char #\() (values 'open_parenthesis #f)]
-       [(eq? char #\)) (values 'close_parenthesis #f)]
+        [(eq? char #\_) (values 'id 'op)]
+       [(char-whitespace? char) (values 'op_spa 'op)]
+      ;  [(eq? char #\() (values 'open_p #f)]
+      ;  [(eq? char #\)) (values 'close_p #f)]
        [else (values 'inv #f)])]
     [(eq? state 'spa)
      (cond
        [(char-operator? char) (values 'op #f)]
        [(char-whitespace? char) (values 'spa #f)]
-       [(eq? char #\() (values 'open_parenthesis #f)]
-       [(eq? char #\)) (values 'close_parenthesis #f)]
+      ;  [(eq? char #\() (values 'open_p #f)]
+      ;  [(eq? char #\)) (values 'close_p #f)]
        [(char-operator? char) (values 'int #f)]
        [else (values 'inv #f)])]
-    
-    [(eq? state 'open_parenthesis)
+    [(eq? state 'op_spa) (cond
+       [(char-numeric? char) (values 'int #f)]
+       [(or (eq? char #\+) (eq? char #\-)) (values 'sign #f)]
+       [(char-alphabetic? char) (values 'id #f)]
+       [(eq? char #\_) (values 'id #f)]
+       [(char-whitespace? char) (values 'op_spa #f)]
+      ;  [(eq? char #\() (values 'open_p #f)]
+      ;  [(eq? char #\)) (values 'close_p #f)]
+       [else (values 'inv #f)])]
+    [(eq? state 'open_p)
      (cond
        [(char-numeric? char) (values 'int #f)]
        [(or (eq? char #\+) (eq? char #\-)) (values 'sign #f)]
        [(char-alphabetic? char) (values 'id #f)]
        [(eq? char #\_) (values 'id #f)]
-       [(eq? char #\() (values 'open_parenthesis #f)]
-       [(eq? char #\)) (values 'close_parenthesis #f)]
+       [(eq? char #\() (values 'open_p #f)]
+       [(eq? char #\)) (values 'close_p #f)]
        [else (values 'inv #f)])]
-    [(eq? state 'close_parenthesis)
+    [(eq? state 'close_p)
      (cond
        [(char-operator? char) (values 'op #f)]
        [(char-whitespace? char) (values 'spa #f)]
-       [(eq? char #\)) (values 'close_parenthesis #f)]
+       [(eq? char #\)) (values 'close_p #f)]
        [else (values 'inv #f)])]
     [else (values 'start #f)]))
