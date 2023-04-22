@@ -4,8 +4,13 @@
 ; - Que se impriman bien los pares
 ; que reconozca chars?
 ; que guarde cada uno de los valores
+#|
+    ; Program that detects tokens of a lenguage and indicates its type or that it is not a valid expression
 
-; Program that detects tokens of a lenguage and indicates its type or that it is not a valid expression
+    Arantza Parra Martinez - A01782023
+    Ma.Fernanda Cortés Lozano - A01026613
+    2023-03-14
+|#
 #lang racket
 
 (require racket/trace)
