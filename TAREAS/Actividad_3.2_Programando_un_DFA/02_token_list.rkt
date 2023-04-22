@@ -22,14 +22,14 @@
 
 (define (arithmetic-lexer strng)
   " Evaluate an arithmetic expression "
-  (validate-dfa strng (dfa delta-arithmetic 'start '(int float exp id spa op sign dot e e_sign open_p close_p))))
+  (validate-dfa (dfa delta-arithmetic 'start '(int float exp id spa op sign dot e e_sign open_p close_p))strng ))
 
 ; Function to evaluate a string using a DFA
 ; Receives the string to test and a structure for a DFA
-(define (validate-dfa input dfa-def)
+(define (validate-dfa dfa-def strng)
   (let loop
 ; Convert the string into a list of chars
-      ([char-list(string->list input)]
+      ([char-list(string->list strng)]
 ; Get the initial state from the DFA definition
        [state (dfa-initial dfa-def)]
 ; The characters that will be forming the token
@@ -42,7 +42,7 @@
 ;  if it is, it checks if the current state is an accept state
        (if (member state (dfa-accept dfa-def))
 ; if it is a valid state, it returns the list of tokens
-           (reverse (cons (cons state (list->string (reverse current-token))) tokens))
+           (reverse (cons (cons(list->string (reverse current-token))state) tokens))
 ;if it is not, it returns an error
            'invalid)]
 ; If the list of characters is not empty, it calls a recursive function
@@ -51,13 +51,13 @@
 ; The function returns a pair of values: the new state and the token found
            ([(new-state found) ((dfa-transition dfa-def) state (car char-list))])
  ;  If the token is finished, it adds it to the list of tokens and calls the recursive function again
-         (if found
-             (if (not (empty? current-token))
+        (if found
+            ;  (if (not (empty? current-token))
                  (loop (cdr char-list) new-state '() 
-                       (cons (cons found(list->string (reverse current-token))) tokens))
-                 (loop (cdr char-list) new-state (cons (car char-list) current-token) tokens))
+                       (cons (cons(list->string (reverse current-token))found) tokens))
 ; If the token is not finished, it calls the recursive function again
              (loop (cdr char-list) new-state (cons (car char-list) current-token) tokens)))])))
+        
     
 (define (char-operator? char)
   " Check if the character is considered an operator "
