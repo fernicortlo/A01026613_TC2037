@@ -58,12 +58,11 @@
 ; If the token is not finished, it calls the recursive function again
              (loop (cdr char-list) new-state (cons (car char-list) current-token) tokens)))])))
         
-    
 (define (char-operator? char)
   " Check if the character is considered an operator "
-  (member char' (#\+ #\- #\* #\/ #\^)))
-  
+  (member char (#\+ #\- #\* #\/ #\^)))
 
+  
 ; Accept numbers of different types
 ; Star state: 'start
 ; Accept states: 'int 'float
