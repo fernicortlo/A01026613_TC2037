@@ -3,6 +3,18 @@
 
 # Fer Cortés
 # 2023-04-18
+#EBNF (Extended Backus-Naur Form)
+# <function> ::= def <name> (<parameters>) do <body> end
+# <name> ::= <lowercase> | <lowercase> <name>
+# <parameters> ::= <parameter> | <parameter> , <parameters>
+# <parameter> ::= <lowercase>
+# <body> ::= <expression> | <expression> <body>
+# <expression> ::= <if> | <if> <expression>
+# <if> ::= if <condition> do <body> else <body> end
+# <condition> ::= <expression> <comparator> <expression>
+# <comparator> ::= == | > | < | >= | <=
+# <lowercase> ::= a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p
+# | q | r | s | t | u | v | w | x | y | z
 
 
 defmodule Recur do
