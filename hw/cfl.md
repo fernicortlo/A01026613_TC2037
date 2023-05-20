@@ -1,4 +1,4 @@
-# **Actividad 3.3 Practicando los lenguajes libres de contexto**
+# <span style="color:lightblue"> **Actividad 3.3 Practicando los lenguajes libres de contexto** </span>
 
 Created by Fer Cortés and Arantza Parra
 
@@ -18,35 +18,55 @@ This is an example of a simple implementation of a module (*Math*) and function 
 It could also include loops and recursion.
 
 **Following that, we could write a **BNF** as follows:**
+``` BNF 
+< module > ::= defmodule < module_name > do < functions > end 
 
-< module > ::= defmodule < module_name > do < function > end 
+< module_name > ::= < upper > < module_name>
 
-< function > ::=  def < name > (< parameters >) do < body > end
+<functions> ::= <private>|<public>
 
-< parameters > ::=  < parameter > | < parameter>, < parameters >
+<private> ::= <do-end-private>|<do-private>
 
-< parameter > ::= < name >
+<public> ::= <do-end-public>|<do-public>
 
-< body > ::=  < exp > | < exp >
+<do-end-public> ::=  def < name > (< parameters >) do < code > end |  def < name > (< parameters >) when <op> <int-value> do < code > end
 
-< exp > ::= < if > |< if > < else > | < if > < else > < else >
+<do-public> ::=  def < name > (< parameters >), do: <code> | def < name > (< parameters >) when <op> <int-value>, do: <code>
 
-< if > ::= if < condition > do < exp >
+<do-end-private> ::=  defp < name > (< parameters >) do < code > end |  defp < name > (< parameters >) when <op> <int-value> do < code > end
 
-< condition > ::= < name > < operator > < name > 
+<do-private> ::=  defp < name > (< parameters >), do: <code> | defp < name > (< parameters >) when <op> <int-value>, do: <code>
 
-< operator > ::= == | < | > | <= | >=
+<functions> ::= <function> | < function> <functions>
 
-< name > ::= < mayus > | < char > < name >
+<name> ::= <lower> <name>
 
-< number > ::= < num > | < num > < number >
+<parameters> ::=  <parameter> | <parameter> , <parameters> 
 
- < char > ::= a | b | c | ... | z A | B | C | ... | Z
+<upper> ::= A | B | ... | Z
 
- < mayus > ::= A | B | C | ... | Z
+< lower > ::= a | b | ... | z
 
- < num >  ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<op> ::= <= | >= | < | >
+ ```
 
 
 **The EBNF could be written as follows:**
 
+```EBNF
+
+
+```
+
+
+reconocer tipos de tokens a identificar
+
+     comentarios, palabras clave, numeros, arg, funciones
+
+hacer expresiones regulares 
+
+    Exp. reg. para un comentario Elixir/Py
+        #.* 
+
+    en una linea hay varios tokens
+        sabemos leer renglon por renglon, provar todo lo que va haciendo match y lo vas quitando y deja el resto
