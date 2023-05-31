@@ -54,19 +54,34 @@ It could also include loops and recursion.
 **The EBNF could be written as follows:**
 
 ```EBNF
+MODULE ::= 'defmodule' MODULE_NAME 'do' {FUNCTIONS} 'end' 
+
+MODULE_NAME ::= UPPER {MODULE_NAME}
+
+FUNCTIONS ::= PRIVATE | PUBLIC 
+
+PRIVATE ::= DO_END_PRIVATE | DO_PRIVATE
+
+PUBLIC ::= DO_END_PUBLIC | DO_PUBLIC
+
+DO_END_PUBLIC ::=  'def' NAME '(' [{PARAMETERS}] ') do' CODE 'end' |  'def' NAME '(' [{PARAMETERS}] ') 'when' OP 'int-value do' CODE 'end'
+
+DO_PUBLIC ::=  'def' NAME '(' [{PARAMETERS}] '), do:' CODE | 'def' NAME '(' [{PARAMETERS}] ') 'when' OP 'int-value, do:' CODE
+
+DO_END_PRIVATE ::=  'defp' NAME '(' [{PARAMETERS}] ') do' CODE 'end' |  'defp' NAME '(' [{PARAMETERS}] ') 'when OP 'int-value do' CODE 'end'
+
+DO_PRIVATE ::=  'defp' NAME '(' [{PARAMETERS}] '), do:' CODE | 'defp' NAME '(' [{PARAMETERS}] ') when' OP 'int-value, do:' CODE
+
+FUNCTION ::= PUBLIC | PRIVATE
+
+NAME ::= LOWER {NAME}
+
+UPPER ::= 'A' | 'B' | ... | 'Z'
+
+LOWER ::= 'a' | 'b' | ... | 'z'
+
+OP ::= '<=' | '>=' | '<' | '>'
+
 
 
 ```
-
-
-reconocer tipos de tokens a identificar
-
-     comentarios, palabras clave, numeros, arg, funciones
-
-hacer expresiones regulares 
-
-    Exp. reg. para un comentario Elixir/Py
-        #.* 
-
-    en una linea hay varios tokens
-        sabemos leer renglon por renglon, provar todo lo que va haciendo match y lo vas quitando y deja el resto
