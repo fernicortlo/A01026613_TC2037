@@ -102,5 +102,14 @@ defmodule TecList do
   defp do_positives([head | tail], res) when head > 0, do: do_positives(tail, [head | res])
   defp do_positives([head | tail], res) when head <= 0, do: do_positives(tail, res)
 
+  @doc """
+  a function that recieves a list, and returns a list, with each of it elemenest
+  multiplied by its position, starting from 1
+  """
+  def multiply_by_position(list), do: do_multiply_by_position(list, 1, [])
+  defp do_multiply_by_position([], _, res), do: Enum.reverse(res)
+  defp do_multiply_by_position([head | tail], pos, res), do: do_multiply_by_position(tail, pos + 1, [head * pos | res])
+
+
 
 end # end defmodule
