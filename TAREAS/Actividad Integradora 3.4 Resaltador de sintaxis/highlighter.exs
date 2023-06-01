@@ -4,7 +4,10 @@
 
 defmodule SyntaxHighlighter do
   # Module attributes to store the regular expressions and CSS classes for different token types
-  @keywords ~r/\b(and|as|assert|async|await|break|class|continue|def|del|elif|else|except|False|finally|for|from|global|if|import|in|is|lambda|None|nonlocal|not|or|pass|raise|return|True|try|while|with|yield)\b/
+  @keywords ~r/\b(and|as|assert|async|await|break|class|
+  continue|def|del|elif|else|except|False|finally|for|from|
+  global|if|import|in|is|lambda|None|nonlocal|not|or|pass|raise|return|
+  True|try|while|with|yield)\b/
   @operators ~r/[+\-*/%=<>!&|^]/
   @literals ~r/\b(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?\b/
   @strings ~r/(\'\'\'|\"\"\")(.|\n)*?\1|(\"|\\")(\?.)*?\2/
@@ -12,12 +15,15 @@ defmodule SyntaxHighlighter do
   # Function to highlight tokens in a Python code file and write HTML and CSS files
   def highlight_file(input_filename, html_filename, css_filename) do
     # Read input Python code file line by line
-    input_file = File.open!(input_filename, [:read])
-    lines = Enum.map(File.stream!(input_file), &String.trim(&1))
+    file_content = File.read!(input_filename)
+    line_list = String.split(file_content, "\n")
+    lines = Enum.map(line_list, &String.trim(&1))
 
     # Initialize output HTML and CSS strings
     html_str = "<html>\n<head>\n<style>\n"
-    css_str = ""
+    css_str = ".keyword {\n color: red;\n}\n.operator
+    {\n color: blue;\n}\n.literal {\n color: green;\n}\n.string
+    {\n color: yellow;\n}\n"
 
     # Loop over each line of input code
 # This code takes in a list of `lines` and applies syntax highlighting to them
