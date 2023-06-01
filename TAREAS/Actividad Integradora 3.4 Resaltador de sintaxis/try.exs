@@ -90,4 +90,5 @@ defmodule SyntaxHighlighter do
 end
 
 
-SyntaxHighlighter.highlight_file("code.py", "highlighter.html")
+# SyntaxHighlighter.highlight_file("code.py", "highlighter.html")
+SyntaxHighlighter.highlight_file("factorial.py", "highlighter_2.html")
