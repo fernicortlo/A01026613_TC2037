@@ -1,6 +1,6 @@
 # Created by and Arantza Parra Martínez and María Fernanda Cortés Lozano
 # This program creates a basic syntax highlighter for the python language using regular expressions;
-# it takes a python file as input and creates a new html file and css file with the syntax highlighted.
+# it takes a python file as input and creates a new html file with the syntax highlighted.
 
 defmodule SyntaxHighlighter do
   # Module attributes to store the regular expressions and CSS classes for different token types
