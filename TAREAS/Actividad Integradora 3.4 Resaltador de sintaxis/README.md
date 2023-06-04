@@ -45,7 +45,7 @@ Para correr el código hay dos opciones:
 
 1. La primera y la más simple es correr el siguiente comando en terminal:
 
-    elixir syntax_highlighter.exs
+    elixir Highlighter.exs
 
 Es importante notar que este útiliza el código fuente de Python proporcionado por las autoras del código. Si quieres probarlo con otros códigos, utiliza la segunda opción.
 
@@ -62,7 +62,7 @@ Ingresa los siguientes comandos en terminal:
 
 Finamlente, una vez que nos encontremos "en el archivo" ingresamos el siguiente comando:
 
-- SyntaxHighlighter.highlight_file("code.py", "syntax_highlighter.html")
+- SyntaxHighlighter.highlight_file("code.py", "Highlighter.html")
     - donde *code.py* se reemplaza por el archivo fuente a analizar y *syntax_highlighter.html* por el nombre del html que se va a generar.
 
 ![IEX](/TAREAS/Actividad%20Integradora%203.4%20Resaltador%20de%20sintaxis/images/cSH.png)
