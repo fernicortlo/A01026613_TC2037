@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax Highlighter</title>
+    <style>
+    .bool { color: purple; }
+.comment { color: grey; }
+.fun_keyword { color: red; }
+.function { color: hotpink; }
+.keyword { color: red; }
+.number { color: orange; }
+.operator { color: pink; }
+.parameter { color: rgb(28, 176, 225); }
+.parentheses { color: blue; }
+.string { color: green; }
+    </style>
+</head>
+<body>
+<pre>
+
+<span class="comment"># Iterative program to invert the digits in an integer number</span>
+
+<span class="comment"># Created by Gilberto Echeverria</span>
+<span class="comment"># 2021-09-02</span>
+
+<span class="fun_keyword">def</span> <span class="function">invert_number</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span>:
+    <span class="parameter">result</span> = <span class="number">0</span>
+    <span class="keyword">while</span> <span class="parameter">num</span> > <span class="number">0</span>:
+        <span class="parameter">result</span> = <span class="parameter">result</span> * 10 + <span class="parameter">num</span> % <span class="number">10</span>
+        <span class="parameter">num</span> //= <span class="number">10</span>
+    <span class="keyword">return</span> result
+
+
+<span class="fun_keyword">def</span> <span class="function">main</span><span class="parentheses">(</span><span class="parentheses">)</span>:
+    num = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter a number: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
+    <span class="function">print</span>(<span class="function">invert_number</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span><span class="parentheses">)</span>
+
+
+<span class="function">main</span><span class="parentheses">(</span><span class="parentheses">)</span></pre>
+</body>
+</html>

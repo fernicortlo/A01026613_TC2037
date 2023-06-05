@@ -62,11 +62,13 @@ Ingresa los siguientes comandos en terminal:
 
 Finamlente, una vez que nos encontremos "en el archivo" ingresamos el siguiente comando:
 
-- SyntaxHighlighter.highlight_file("code.py", "Highlighter.html")
-    - donde *code.py* se reemplaza por el archivo fuente a analizar y *syntax_highlighter.html* por el nombre del html que se va a generar.
+- SyntaxHighlighter.highlight_file("Test1.py", "Highlighter.html")
+    - donde *Test1.py* se reemplaza por el archivo fuente a analizar y *syntax_highlighter.html* por el nombre del html que se va a generar.
 
 ![IEX](/TAREAS/Actividad%20Integradora%203.4%20Resaltador%20de%20sintaxis/images/cSH.png)
 
 En ambos casos, seguir estas instrucciones debería de generar un archivo HTML en que se se puede observar el código con la sintaxis subrayada. 
+
+Si se busca correr alguna otras de las pruebas, se debe de modificar el nombre del archivo .py por el deseado. 
 
 **Nota:** Este resaltador de funciones solo funciona con el lenguaje Python.
