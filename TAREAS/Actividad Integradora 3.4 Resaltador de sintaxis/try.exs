@@ -1,7 +1,3 @@
-# Created by and Arantza Parra Martínez and María Fernanda Cortés Lozano
-# This program creates a basic syntax highlighter for the python language using regular expressions;
-# it takes a python file as input and creates a new html file with the syntax highlighted.
-
 defmodule SyntaxHighlighter do
   def highlight_file(input_filename, html_filename) do
     lines = File.read!(input_filename)
@@ -43,6 +39,19 @@ defmodule SyntaxHighlighter do
     <pre>
     """
 
+    # tokens = [
+    #   {~r/(\b[a-zA-Z_,]\w*\b)(?=\s*(?:,|\)|:))/, "parameter"},
+    #   {~r/\bdef\s+([a-zA-Z_]\w*)\s*\(/, "function"},
+    #   {~r/#(.*)$/, "comment"},
+    #   {~r/\b(def|return|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not|for)\b/, "keyword"},
+    #   {~r/\b(True|False)\b/, "bool"},
+    #   {~r/\(/, "parentheses"},
+    #   {~r/\)/, "parentheses"},
+    #   {~r/\b\d+(\.\d+)?\b/, "number"},
+    #   {~r/(\+|-|==|!=|\%|\|\)/, "operator"},
+    #   {~r/\b(def|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not|for)\s+([a-zA-Z_]\w*)\s*\(/, "function"}
+
+    # ]
 
           tokens = [
             {~r/#(.*)$/, "comment"},
@@ -76,11 +85,10 @@ defmodule SyntaxHighlighter do
         {regex, class} ->
           [head | tail] = Regex.split(regex, line, include_captures: true)
           head <> "<span class=\"#{class}\">#{List.first(tail)}</span>" <> do_tokens(List.to_string(tail -- [List.first(tail)]), token_list)
-  end
-end
+      end
+    end
 end
 
 
-SyntaxHighlighter.highlight_file("Test1.py", "highlighter.html")
-SyntaxHighlighter.highlight_file("Test2.py", "highlighter_2.html")
-SyntaxHighlighter.highlight_file("Test3.py", "highlighter_3.html")
+# SyntaxHighlighter.highlight_file("code.py", "highlighter.html")
+SyntaxHighlighter.highlight_file("factorial.py", "highlighter_2.html")
