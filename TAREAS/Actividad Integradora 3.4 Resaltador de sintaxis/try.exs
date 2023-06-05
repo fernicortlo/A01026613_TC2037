@@ -1,9 +1,20 @@
+
+
+# Code created by Arantza Parra Martínez and Maria Fernanda Cortes Lozano
+# Program that creates a basic Syntax Highlighter for Python codes using regex and HTML
+
+# Defines a module called SyntaxHighlighter
 defmodule SyntaxHighlighter do
+  # Public function that takes an filename that will examine and an filename for the  generated HTML file
   def highlight_file(input_filename, html_filename) do
+    # Read all lines from the input file and turns into a list
     lines = File.read!(input_filename)
+    # Split the lines into a list of strings
              |> String.split("\n")
+    # Remove trailing whitespace from each line
              |> Enum.map(&String.trim_trailing/1)
 
+    # Define a map of CSS classes and the color that will be used to highlight them
     css_classes = %{
       "comment" => "grey",
       "parameter" =>  "rgb(28, 176, 225)",
@@ -17,11 +28,13 @@ defmodule SyntaxHighlighter do
       "string" => "green",
          }
 
+    # Define a string that uses map to generate CSS classes and colors
     style_str = Enum.map(css_classes, fn {class, color} ->
       ".#{class} { color: #{color}; }"
     end)
     |> Enum.join("\n")
 
+    # Define the structure that the html file needs to have as well as the content of the file
     html_str =
     """
     <!DOCTYPE html>
@@ -39,56 +52,49 @@ defmodule SyntaxHighlighter do
     <pre>
     """
 
-    # tokens = [
-    #   {~r/(\b[a-zA-Z_,]\w*\b)(?=\s*(?:,|\)|:))/, "parameter"},
-    #   {~r/\bdef\s+([a-zA-Z_]\w*)\s*\(/, "function"},
-    #   {~r/#(.*)$/, "comment"},
-    #   {~r/\b(def|return|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not|for)\b/, "keyword"},
-    #   {~r/\b(True|False)\b/, "bool"},
-    #   {~r/\(/, "parentheses"},
-    #   {~r/\)/, "parentheses"},
-    #   {~r/\b\d+(\.\d+)?\b/, "number"},
-    #   {~r/(\+|-|==|!=|\%|\|\)/, "operator"},
-    #   {~r/\b(def|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not|for)\s+([a-zA-Z_]\w*)\s*\(/, "function"}
+    # Define a list where the regex pattern is matched to a css class previously defined
+    tokens = [
+      {~r/#(.*)$/, "comment"},
+      {~r/\b(def|for|if)\b/, "fun_keyword"},
+      {~r/\b([a-zA-Z_]\w*)\s*(?=\s*\()/, "function"},
+      {~r/("[^"]*")|('[^']*')/, "string"},
+      {~r/\b(return|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not)\b/, "keyword"},
+      {~r/\(/, "parentheses"},
+      {~r/(\b[a-zA-Z_,]\w*\b)(?=\s*(?:,|\)|:|\s))/, "parameter"},
+      {~r/\b\d+(\.\d+)?\b/, "number"},
+      {~r/\)/, "parentheses"},
+      {~r/(\+|-|==|!=|\%|\||\*|\/|\/\/|\*\*|<=|>=|<<|>>|&|\^|<|>|,|=|:)/, "operator"},
+      {~r/\b(True|False)\b/, "bool"},
+    ]
 
-    # ]
-
-          tokens = [
-            {~r/#(.*)$/, "comment"},
-            {~r/\b(def|for|if)\b/, "fun_keyword"},
-            {~r/\b([a-zA-Z_]\w*)\s*(?=\s*\()/, "function"},
-            {~r/("[^"]*")|('[^']*')/, "string"},
-            {~r/\b(return|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not)\b/, "keyword"},
-            {~r/\(/, "parentheses"},
-            {~r/(\b[a-zA-Z_,]\w*\b)(?=\s*(?:,|\)|:|\s))/, "parameter"},
-            {~r/\b\d+(\.\d+)?\b/, "number"},
-            {~r/\)/, "parentheses"},
-            {~r/\b(True|False)\b/, "bool"},
-          ]
-
-
-
+    # Apply the functuon do_tokens to each line of code
     processed_lines = Enum.map(lines, fn line ->
-    do_tokens(line, tokens)
+      do_tokens(line, tokens)
     end)
 
+    # Concatenate the processed lines into a single string and add the closing tags for the html file
     html_str = html_str <> Enum.join(processed_lines, "\n") <> "</pre>\n</body>\n</html>"
 
+    # Uses the function write to create the html file
     File.write(html_filename, html_str)
     end
 
-    defp do_tokens(line, token_list) do
-      case Enum.find(token_list, fn {regex, _class} -> Regex.match?(regex, line) end) do
-        nil ->
-          line
-
-        {regex, class} ->
-          [head | tail] = Regex.split(regex, line, include_captures: true)
-          head <> "<span class=\"#{class}\">#{List.first(tail)}</span>" <> do_tokens(List.to_string(tail -- [List.first(tail)]), token_list)
-      end
+  # Definition of the function do_tokens that takes a line of code and a list of tokens
+  def do_tokens(line, token_list) do
+    # Search for regex pattern matches in the line of code
+    case Enum.find(token_list, fn {regex, _class} -> Regex.match?(regex, line) end) do
+      # If no match is found, return the original line unchanged
+      nil ->
+        line
+      # If a match is found, split the line into a head and a tail where the head is the token already found and continue applying the function do_tokens to the tail (the rest of the list)
+      {regex, class} ->
+        [head | tail] = Regex.split(regex, line, include_captures: true)
+        head <> "<span class=\"#{class}\">#{List.first(tail)}</span>" <> do_tokens(List.to_string(tail -- [List.first(tail)]), token_list)
     end
+  end
 end
 
-
-# SyntaxHighlighter.highlight_file("code.py", "highlighter.html")
-SyntaxHighlighter.highlight_file("factorial.py", "highlighter_2.html")
+# Call function in test files to prove that the program works
+SyntaxHighlighter.highlight_file("Test1.py", "highlighter.html")
+SyntaxHighlighter.highlight_file("Test2.py", "highlighter_2.html")
+SyntaxHighlighter.highlight_file("Test3.py", "highlighter_3.html")

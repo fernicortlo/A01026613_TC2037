@@ -23,26 +23,26 @@
 <span class="comment">#This is a Python program to calculate the factorial of a number</span>
 
 <span class="comment">#This is a comment</span>
-<span class="fun_keyword">def</span> <span class="function">greet</span><span class="parentheses">(</span><span class="parameter">name</span><span class="parentheses">)</span><span class="operator">:</span>
+<span class="fun_keyword">def</span> <span class="function">greet</span><span class="parentheses">(</span><span class="parameter">name</span><span class="parentheses">)</span>:
     <span class="function">print</span>(<span class="string">"Hello, "</span> + name + <span class="string">"!"</span><span class="parentheses">)</span>
 
-<span class="fun_keyword">def</span> <span class="function">calculate_sum</span><span class="parentheses">(</span><span class="parameter">a</span>, <span class="parameter">b</span><span class="parentheses">)</span><span class="operator">:</span>
-    <span class="keyword">return</span> <span class="parameter">a</span> <span class="operator">+</span> b
+<span class="fun_keyword">def</span> <span class="function">calculate_sum</span><span class="parentheses">(</span><span class="parameter">a</span>, <span class="parameter">b</span><span class="parentheses">)</span>:
+    <span class="keyword">return</span> <span class="parameter">a</span> + b
 
-<span class="fun_keyword">def</span> <span class="function">is_prime</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span><span class="operator">:</span>
-    <span class="fun_keyword">if</span> <span class="parameter">num</span> < <span class="number">2</span><span class="operator">:</span>
+<span class="fun_keyword">def</span> <span class="function">is_prime</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span>:
+    <span class="fun_keyword">if</span> <span class="parameter">num</span> < <span class="number">2</span>:
         <span class="keyword">return</span> <span class="bool">False</span>
-    <span class="fun_keyword">for</span> i in <span class="function">range</span>(2, <span class="function">int</span><span class="parentheses">(</span><span class="parameter">num</span> * <span class="number">0.5</span>) + <span class="number">1</span><span class="parentheses">)</span><span class="operator">:</span>
-        <span class="fun_keyword">if</span> <span class="parameter">num</span> % <span class="parameter">i</span> == <span class="number">0</span><span class="operator">:</span>
+    <span class="fun_keyword">for</span> i in <span class="function">range</span>(2, <span class="function">int</span><span class="parentheses">(</span><span class="parameter">num</span> * <span class="number">0.5</span>) + <span class="number">1</span><span class="parentheses">)</span>:
+        <span class="fun_keyword">if</span> <span class="parameter">num</span> % <span class="parameter">i</span> == <span class="number">0</span>:
             <span class="keyword">return</span> <span class="bool">False</span>
     <span class="keyword">return</span> <span class="bool">True</span>
 
 <span class="parameter">x</span> = <span class="number">10</span>
 <span class="parameter">y</span> = <span class="number">5</span>
 z = <span class="function">calculate_sum</span><span class="parentheses">(</span><span class="parameter">x</span>, <span class="parameter">y</span><span class="parentheses">)</span>
-<span class="fun_keyword">if</span> <span class="function">is_prime</span><span class="parentheses">(</span><span class="parameter">z</span><span class="parentheses">)</span><span class="operator">:</span>
+<span class="fun_keyword">if</span> <span class="function">is_prime</span><span class="parentheses">(</span><span class="parameter">z</span><span class="parentheses">)</span>:
     <span class="function">greet</span>(<span class="string">"The sum is a prime number."</span><span class="parentheses">)</span>
-<span class="keyword">else</span><span class="operator">:</span>
+<span class="keyword">else</span>:
     <span class="function">print</span>(<span class="string">"The sum is not a prime number."</span><span class="parentheses">)</span></pre>
 </body>
 </html>
