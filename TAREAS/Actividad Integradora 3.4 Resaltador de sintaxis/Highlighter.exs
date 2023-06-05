@@ -91,7 +91,7 @@
     end
   end
 
-  # Call highlight_file/2 function on three different input files with output filenames "highlighter.html", "highlighter_2.html" and "highlighter_3.html"
+  # Call function in test files to prove that the program works
   SyntaxHighlighter.highlight_file("Test1.py", "highlighter.html")
   SyntaxHighlighter.highlight_file("Test2.py", "highlighter_2.html")
   SyntaxHighlighter.highlight_file("Test3.py", "highlighter_3.html")
