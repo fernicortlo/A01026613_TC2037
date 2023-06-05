@@ -26,15 +26,15 @@
 <span class="comment"># Created by Gilberto Echeverria</span>
 <span class="comment"># 2021-09-02</span>
 
-<span class="fun_keyword">def</span> <span class="function">invert_number</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span>:
+<span class="fun_keyword">def</span> <span class="function">invert_number</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span><span class="operator">:</span>
     <span class="parameter">result</span> = <span class="number">0</span>
-    <span class="keyword">while</span> <span class="parameter">num</span> > <span class="number">0</span>:
+    <span class="keyword">while</span> <span class="parameter">num</span> > <span class="number">0</span><span class="operator">:</span>
         <span class="parameter">result</span> = <span class="parameter">result</span> * 10 + <span class="parameter">num</span> % <span class="number">10</span>
         <span class="parameter">num</span> //= <span class="number">10</span>
     <span class="keyword">return</span> result
 
 
-<span class="fun_keyword">def</span> <span class="function">main</span><span class="parentheses">(</span><span class="parentheses">)</span>:
+<span class="fun_keyword">def</span> <span class="function">main</span><span class="parentheses">(</span><span class="parentheses">)</span><span class="operator">:</span>
     num = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter a number: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
     <span class="function">print</span>(<span class="function">invert_number</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span><span class="parentheses">)</span>
 

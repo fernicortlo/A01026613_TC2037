@@ -69,6 +69,7 @@ Finamlente, una vez que nos encontremos "en el archivo" ingresamos el siguiente 
 
 En ambos casos, seguir estas instrucciones debería de generar un archivo HTML en que se se puede observar el código con la sintaxis subrayada. 
 
-Si se busca correr alguna otras de las pruebas, se debe de modificar el nombre del archivo .py por el deseado. 
+Si se busca correr alguna otras de las pruebas, se debe de modificar el nombre del archivo .py por el deseado a examinar.
+Se agregaron dos pruebas más para verificar el funcionamiento del resaltador (Test2.py & Test3.py) 
 
 **Nota:** Este resaltador de funciones solo funciona con el lenguaje Python.
