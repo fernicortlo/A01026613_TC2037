@@ -14,7 +14,19 @@
  Sin embargo, la ejecución del algoritmo puede ser eficiente en la mayoría de los casos, ya que la mayoría de los archivos de código fuente Python no son tan extensos. Además, el uso de expresiones regulares permite un procesamiento rápido y eficiente en la mayoría de los casos.
 
  Es importante tener en cuenta que este enfoque basado en expresiones regulares tiene sus limitaciones y no puede proporcionar un análisis de código completo y preciso en todos los casos.
+ ### <span style = "color: lightgreen;"> Implicaciones éticas </span>
+ La creación de resaltadores de sintaxis no llega a tener implicaciones éticas tan complejas pues suelen ser creados como una ayuda a la compresión del código del programador. 
 
+ Sin embargo, por la naturaleza de este, es necesario que se tomen en cuenta ciertos factores al momento de desarrollarlos para que no se incurra en ninguna mala práctica. 
+
+   <span style = "color: hotpink;"> 1. Confiabilidad del código fuente </span>
+   
+   Es de suma importancia que el resaltador de sintaxis tenga bien identificado cada uno de los tipos de tokens del lenguaje. Ya que, de no ser así, el código no será resaltada de manera correcta. Un mal resaltador puede afectar la calidad del código que se está escribiendo pues la lectura de este se ve comprometida
+    
+ <span style = "color: hotpink;"> 2. Protección de datos</span>
+
+ En el caso específico del código desarrollado por nosotras, al leer archivos para su procesamiento, es de suma importancia que el contenido de estos códigos esté protegido y sea confidencial. Es decir, al código recibir el archivo a procesar, la información dentro del archivo debe de ser tratada sólo para lo establecido en el código (sólo ser leída y reslatada). Esa información no debe de ser replicada o almacenada en otro sitio para darle otro uso. 
+   
 ### <span style = "color: lightgreen;">  Complejidad del algoritmo </span>
 
 Para conocer la complejidad del algoritmo podemos dividirlo en dos partes: el procesamiento de las líneas de código y la generación del archivo HTML resultante.
@@ -45,7 +57,7 @@ Para correr el código hay dos opciones:
 
 1. La primera y la más simple es correr el siguiente comando en terminal:
 
-    elixir syntax_highlighter.exs
+    elixir Highlighter.exs
 
 Es importante notar que este útiliza el código fuente de Python proporcionado por las autoras del código. Si quieres probarlo con otros códigos, utiliza la segunda opción.
 
@@ -62,11 +74,14 @@ Ingresa los siguientes comandos en terminal:
 
 Finamlente, una vez que nos encontremos "en el archivo" ingresamos el siguiente comando:
 
-- SyntaxHighlighter.highlight_file("code.py", "syntax_highlighter.html")
-    - donde *code.py* se reemplaza por el archivo fuente a analizar y *syntax_highlighter.html* por el nombre del html que se va a generar.
+- SyntaxHighlighter.highlight_file("Test1.py", "Highlighter.html")
+    - donde *Test1.py* se reemplaza por el archivo fuente a analizar y *syntax_highlighter.html* por el nombre del html que se va a generar.
 
 ![IEX](/TAREAS/Actividad%20Integradora%203.4%20Resaltador%20de%20sintaxis/images/cSH.png)
 
 En ambos casos, seguir estas instrucciones debería de generar un archivo HTML en que se se puede observar el código con la sintaxis subrayada. 
+
+Si se busca correr alguna otras de las pruebas, se debe de modificar el nombre del archivo .py por el deseado a examinar.
+Se agregaron dos pruebas más para verificar el funcionamiento del resaltador (Test2.py & Test3.py) 
 
 **Nota:** Este resaltador de funciones solo funciona con el lenguaje Python.

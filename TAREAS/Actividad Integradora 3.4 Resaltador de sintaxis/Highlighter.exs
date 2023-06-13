@@ -1,5 +1,3 @@
-
-
 # Code created by Arantza Parra Martínez and Maria Fernanda Cortes Lozano
 # Program that creates a basic Syntax Highlighter for Python codes using regex and HTML
 
@@ -13,8 +11,7 @@ defmodule SyntaxHighlighter do
              |> String.split("\n")
     # Remove trailing whitespace from each line
              |> Enum.map(&String.trim_trailing/1)
-
-    # Define a map of CSS classes and the color that will be used to highlight them
+  # Public function that takes an filename that will examine and an filename for the  generated HTML file
     css_classes = %{
       "comment" => "grey",
       "parameter" =>  "rgb(28, 176, 225)",
@@ -51,25 +48,23 @@ defmodule SyntaxHighlighter do
     <body>
     <pre>
     """
-
-    # Define a list where the regex pattern is matched to a css class previously defined
-    tokens = [
-      {~r/#(.*)$/, "comment"},
-      {~r/\b(def|for|if)\b/, "fun_keyword"},
-      {~r/\b([a-zA-Z_]\w*)\s*(?=\s*\()/, "function"},
-      {~r/("[^"]*")|('[^']*')/, "string"},
-      {~r/\b(return|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not)\b/, "keyword"},
-      {~r/\(/, "parentheses"},
-      {~r/(\b[a-zA-Z_,]\w*\b)(?=\s*(?:,|\)|:|\s))/, "parameter"},
-      {~r/\b\d+(\.\d+)?\b/, "number"},
-      {~r/\)/, "parentheses"},
-      {~r/(\+|-|==|!=|\%|\||\*|\/|\/\/|\*\*|<=|>=|<<|>>|&|\^|<|>|,|=|:)/, "operator"},
-      {~r/\b(True|False)\b/, "bool"},
-    ]
+ # Define a list where the regex pattern is matched to a css class previously defined
+          tokens = [
+            {~r/#(.*)$/, "comment"},
+            {~r/\b(def|for|if)\b/, "fun_keyword"},
+            {~r/\b([a-zA-Z_]\w*)\s*(?=\s*\()/, "function"},
+            {~r/("[^"]*")|('[^']*')/, "string"},
+            {~r/\b(return|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not)\b/, "keyword"},
+            {~r/\(/, "parentheses"},
+            {~r/(\b[a-zA-Z_,]\w*\b)(?=\s*(?:,|\)|:|\s))/, "parameter"},
+            {~r/\b\d+(\.\d+)?\b/, "number"},
+            {~r/\)/, "parentheses"},
+            {~r/\b(True|False)\b/, "bool"},
+          ]
 
     # Apply the functuon do_tokens to each line of code
     processed_lines = Enum.map(lines, fn line ->
-      do_tokens(line, tokens)
+    do_tokens(line, tokens)
     end)
 
     # Concatenate the processed lines into a single string and add the closing tags for the html file
@@ -79,19 +74,16 @@ defmodule SyntaxHighlighter do
     File.write(html_filename, html_str)
     end
 
-  # Definition of the function do_tokens that takes a line of code and a list of tokens
-  def do_tokens(line, token_list) do
-    # Search for regex pattern matches in the line of code
-    case Enum.find(token_list, fn {regex, _class} -> Regex.match?(regex, line) end) do
-      # If no match is found, return the original line unchanged
-      nil ->
-        line
-      # If a match is found, split the line into a head and a tail where the head is the token already found and continue applying the function do_tokens to the tail (the rest of the list)
-      {regex, class} ->
-        [head | tail] = Regex.split(regex, line, include_captures: true)
-        head <> "<span class=\"#{class}\">#{List.first(tail)}</span>" <> do_tokens(List.to_string(tail -- [List.first(tail)]), token_list)
+    defp do_tokens(line, token_list) do
+      case Enum.find(token_list, fn {regex, _class} -> Regex.match?(regex, line) end) do
+        nil ->
+          line
+
+        {regex, class} ->
+          [head | tail] = Regex.split(regex, line, include_captures: true)
+          head <> "<span class=\"#{class}\">#{List.first(tail)}</span>" <> do_tokens(List.to_string(tail -- [List.first(tail)]), token_list)
+      end
     end
-  end
 end
 
 # Call function in test files to prove that the program works
