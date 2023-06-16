@@ -61,7 +61,20 @@ defmodule SyntaxHighlighter do
             {~r/\)/, "parentheses"},
             {~r/\b(True|False)\b/, "bool"},
           ]
-
+          # tokens = [
+          # {~r/("[^"]*")|('[^']*')/, "string"},
+          # {~r/\b(def|if|for)\b/, "keyword"},
+          # {~r/\b([a-zA-Z_]\w*)\b\s*(?=\s*\()/, "function"},
+          # {~r/\b([a-zA-Z_]\w*)\b(?=\s*(?:,|\)|:))/, "parameter"},
+          # {~r/(?<=\s|^)([a-zA-Z_]\w*)(?=\s*=)/, "parameter"},
+          # {~r/#(.*)$/, "comment"},
+          # {~r/\(/, "parentheses"},
+          # {~r/\b(def|return|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not)\b/, "keyword"},
+          # {~r/(\+\+|\-\-|\*|\/|\/\/|\*\*|\%|==|!=|<=|\œ>=|=|&|\^|>>|<<|<|>|,|:)/, "operator"},
+          # {~r/\b\d+(\.\d+)?\b/, "number"},
+          # {~r/\)/, "parentheses"},
+          # {~r/\b(True|False)\b/, "bool"},
+          # ]
     # Apply the functuon do_tokens to each line of code
     processed_lines = Enum.map(lines, fn line ->
     do_tokens(line, tokens)
