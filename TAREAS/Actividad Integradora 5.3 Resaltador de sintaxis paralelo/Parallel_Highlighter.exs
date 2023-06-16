@@ -50,13 +50,13 @@ defmodule SyntaxHighlighter do
     """
  # Define a list where the regex pattern is matched to a css class previously defined
           tokens = [
-            {~r/(#.*$)/, "comment"},
+            {~r/#(.*)$/, "comment"},
             {~r/\b(def|for|if)\b/, "fun_keyword"},
-            {~r/\bdef\s+([a-zA-Z_]\w*)/, "function"},
+            {~r/\b([a-zA-Z_]\w*)\s*(?=\s*\()/, "function"},
             {~r/("[^"]*")|('[^']*')/, "string"},
-            {~r/\b(rdef|for|if|eturn|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not)\b/, "keyword"},
+            {~r/\b(return|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not)\b/, "keyword"},
             {~r/\(/, "parentheses"},
-            {~r/(\b[a-zA-Z_]\w*\b)(?=\s*,|\s*\))/, "parameter"},
+            {~r/(\b[a-zA-Z_,]\w*\b)(?=\s*(?:,|\)|:|\s))/, "parameter"},
             {~r/\b\d+(\.\d+)?\b/, "number"},
             {~r/\)/, "parentheses"},
             {~r/\b(True|False)\b/, "bool"},
@@ -75,27 +75,43 @@ defmodule SyntaxHighlighter do
     end
 
     defp do_tokens(line, token_list) do
-      line
-      |> String.split(~r/(\s|\(|\))/, include_captures: true)
-      |> Enum.map(&tokenize_string(&1, token_list))
-      |> Enum.join("")
-  end
+      case Enum.find(token_list, fn {regex, _class} -> Regex.match?(regex, line) end) do
+        nil ->
+          line
 
-
-    defp tokenize_string(token, token_list) do
-      class = find_class(token, token_list)
-      "<span class=\"#{class}\">#{token}</span>"
-    end
-
-    defp find_class(token, token_list) do
-      case Enum.find(token_list, fn {regex, _class} -> Regex.match?(regex, token) end) do
-        nil -> token
-        {_regex, class} -> class
+        {regex, class} ->
+          [head | tail] = Regex.split(regex, line, include_captures: true)
+          head <> "<span class=\"#{class}\">#{List.first(tail)}</span>" <> do_tokens(List.to_string(tail -- [List.first(tail)]), token_list)
       end
     end
+    # List of input and output files
+  @file_pairs [
+    {"Test1.py", "highlighter.html"},
+    {"Test2.py", "highlighter_2.html"},
+    {"Test3.py", "highlighter_3.html"},
+
+  ]
+  def ranges(files) do
+    cores = max(System.schedulers_online(), 1)
+    chunk_size = max(div(Enum.count(files), cores), 1)
+    Enum.chunk_every(files, chunk_size)
   end
 
-# Call function in test files to prove that the program works
-SyntaxHighlighter.highlight_file("Test1.py", "highlighter.html")
-SyntaxHighlighter.highlight_file("Test2.py", "highlighter_2.html")
-SyntaxHighlighter.highlight_file("Test3.py", "highlighter_3.html")
+  def print_core_info do
+    IO.puts("Number of cores available: #{System.schedulers_online()}")
+  end
+
+  def highlight_files(input_files \\@file_pairs) do
+    groups = ranges(input_files)
+
+    tasks = Enum.map(groups, fn group ->
+      Task.async(fn ->
+        Enum.each(group, fn {input, output} -> highlight_file(input, output) end)
+      end)
+    end)
+
+    tasks
+    |> Enum.map(&Task.await/1)
+  end
+end
+SyntaxHighlighter.highlight_files()
