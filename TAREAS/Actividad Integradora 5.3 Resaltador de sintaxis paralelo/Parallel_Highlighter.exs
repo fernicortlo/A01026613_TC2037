@@ -114,4 +114,5 @@ defmodule SyntaxHighlighter do
     |> Enum.map(&Task.await/1)
   end
 end
+
 SyntaxHighlighter.highlight_files()
