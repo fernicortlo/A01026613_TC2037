@@ -30,7 +30,7 @@ Running the function three different times we will calculate an average in order
 
 For the highlighting function using parallel programing, the time obtained is:
 
-![1st function time](/TAREAS/Actividad%20Integradora%205.3%20Resaltador%20de%20sintaxis%20paralelo/images/1st.png)
+![1st function time](/TAREAS/Actividad%20Integradora%205.3%20Resaltador%20de%20sintaxis%20paralelo/images/2nd.png)
 
 If we calculate the average we get 0.057 seconds. 
 
