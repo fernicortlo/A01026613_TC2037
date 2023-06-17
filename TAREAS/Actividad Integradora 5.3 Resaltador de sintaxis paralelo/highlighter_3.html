@@ -20,30 +20,127 @@
 </head>
 <body>
 <pre>
-<span class="comment"># This is a Python program to calculate the factorial of a number</span>
+<span class="comment">#Sample Python code to test syntax highlighter</span>
+<span class="comment"># Arantza Parra Martínez and Maria Fernanda Cortes Lozano</span>
 
-<span class="comment"># This is a comment</span>
-<span class="fun_keyword">def</span> <span class="function">greet</span><span class="parentheses">(</span><span class="parameter">name</span><span class="parentheses">)</span>:
-    <span class="function">print</span>(<span class="string">"Hello, "</span> + name + <span class="string">"!"</span><span class="parentheses">)</span>
+<span class="comment"># Define a function to calculate the sum of a list of numbers</span>
+<span class="fun_keyword">def</span> <span class="function">find_sum</span><span class="parentheses">(</span><span class="parameter">num_list</span><span class="parentheses">)</span>:
+    return <span class="function">sum</span><span class="parentheses">(</span><span class="parameter">num_list</span><span class="parentheses">)</span>
 
-<span class="fun_keyword">def</span> <span class="function">calculate_sum</span><span class="parentheses">(</span><span class="parameter">a</span>, <span class="parameter">b</span><span class="parentheses">)</span>:
-    <span class="keyword">return</span> <span class="parameter">a</span> + b
+<span class="comment"># Define a function to calculate the average of a list of numbers</span>
+<span class="fun_keyword">def</span> <span class="function">find_avg</span><span class="parentheses">(</span><span class="parameter">num_list</span><span class="parentheses">)</span>:
+    return <span class="function">sum</span>(num_list) / <span class="function">len</span><span class="parentheses">(</span><span class="parameter">num_list</span><span class="parentheses">)</span>
 
+<span class="comment"># Define a function to find the median of a list of numbers</span>
+<span class="fun_keyword">def</span> <span class="function">find_median</span><span class="parentheses">(</span><span class="parameter">num_list</span><span class="parentheses">)</span>:
+    sorted_list = <span class="function">sorted</span><span class="parentheses">(</span><span class="parameter">num_list</span><span class="parentheses">)</span>
+    mid = <span class="function">len</span><span class="parentheses">(</span><span class="parameter">sorted_list</span>) // <span class="number">2</span>
+    <span class="fun_keyword">if</span> <span class="function">len</span><span class="parentheses">(</span><span class="parameter">sorted_list</span>) % <span class="number">2</span> == <span class="number">0</span>:
+        <span class="function">return </span><span class="parentheses">(</span>sorted_list[mid-<span class="number">1</span>] + sorted_list[mid]) / <span class="number">2</span>
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> sorted_list[mid]
+
+<span class="comment"># Define a function to convert Celsius to Fahrenheit</span>
+<span class="fun_keyword">def</span> <span class="function">celsius_to_fahren</span><span class="parentheses">(</span><span class="parameter">temp_c</span><span class="parentheses">)</span>:
+    <span class="keyword">return</span> <span class="parameter">temp_c</span> * <span class="number">9</span>/<span class="number">5</span> + <span class="number">32</span>
+
+<span class="comment"># Define a function to convert Fahrenheit to Celsius</span>
+<span class="fun_keyword">def</span> <span class="function">fahren_to_celsius</span><span class="parentheses">(</span><span class="parameter">temp_f</span><span class="parentheses">)</span>:
+    <span class="function">return </span><span class="parentheses">(</span><span class="parameter">temp_f</span> - <span class="number">32</span>) * <span class="number">5</span>/<span class="number">9</span>
+
+<span class="comment"># Define a function to calculate the area of a triangle</span>
+<span class="fun_keyword">def</span> <span class="function">find_tri_area</span><span class="parentheses">(</span><span class="parameter">base</span>, <span class="parameter">height</span><span class="parentheses">)</span>:
+    <span class="keyword">return</span> 0.5 * <span class="parameter">base</span> * height
+
+<span class="comment"># Define a function to calculate the perimeter of a rectangle</span>
+<span class="fun_keyword">def</span> <span class="function">find_rect_perimeter</span><span class="parentheses">(</span><span class="parameter">width</span>, <span class="parameter">height</span><span class="parentheses">)</span>:
+    <span class="keyword">return</span> 2 * <span class="parentheses">(</span><span class="parameter">width</span> + <span class="parameter">height</span><span class="parentheses">)</span>
+
+<span class="comment"># Define a function to print out a multiplication table</span>
+<span class="fun_keyword">def</span> <span class="function">mult_table</span><span class="parentheses">(</span><span class="parameter">size</span><span class="parentheses">)</span>:
+    <span class="fun_keyword">for</span> i in <span class="function">range</span><span class="parentheses">(</span><span class="number">1</span>, size+<span class="number">1</span><span class="parentheses">)</span>:
+        <span class="fun_keyword">for</span> j in <span class="function">range</span><span class="parentheses">(</span><span class="number">1</span>, size+<span class="number">1</span><span class="parentheses">)</span>:
+            <span class="function">print</span>(i*j, end=<span class="string">"\t"</span><span class="parentheses">)</span>
+        <span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Define a function to check if a number is prime</span>
 <span class="fun_keyword">def</span> <span class="function">is_prime</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span>:
-    <span class="fun_keyword">if</span> <span class="parameter">num</span> < <span class="number">2</span>:
+    <span class="fun_keyword">if</span> <span class="parameter">num</span> <= <span class="number">1</span>:
         <span class="keyword">return</span> <span class="bool">False</span>
-    <span class="fun_keyword">for</span> i in <span class="function">range</span>(2, <span class="function">int</span><span class="parentheses">(</span><span class="parameter">num</span> ** <span class="number">0.5</span>) + <span class="number">1</span><span class="parentheses">)</span>:
-        <span class="fun_keyword">if</span> <span class="parameter">num</span> % <span class="parameter">i</span> == <span class="number">0</span>:
-            <span class="keyword">return</span> <span class="bool">False</span>
-    <span class="keyword">return</span> <span class="bool">True</span>
+    <span class="keyword">elif</span> <span class="parameter">num</span> == <span class="number">2</span>:
+        <span class="keyword">return</span> <span class="bool">True</span>
+    <span class="keyword">else</span>:
+        <span class="fun_keyword">for</span> i in <span class="function">range</span>(2, <span class="function">int</span><span class="parentheses">(</span><span class="parameter">num</span> ** <span class="number">0.5</span>) + <span class="number">1</span><span class="parentheses">)</span>:
+            <span class="fun_keyword">if</span> <span class="parameter">num</span> % <span class="parameter">i</span> == <span class="number">0</span>:
+                <span class="keyword">return</span> <span class="bool">False</span>
+        <span class="keyword">return</span> <span class="bool">True</span>
 
-<span class="parameter">x</span> = <span class="number">10</span>
-<span class="parameter">y</span> = <span class="number">5</span>
-z = <span class="function">calculate_sum</span><span class="parentheses">(</span><span class="parameter">x</span>, <span class="parameter">y</span><span class="parentheses">)</span>
-<span class="fun_keyword">if</span> <span class="function">is_prime</span><span class="parentheses">(</span><span class="parameter">z</span><span class="parentheses">)</span>:
-    <span class="function">greet</span>(<span class="string">"The sum is a prime number."</span><span class="parentheses">)</span>
-<span class="keyword">else</span>:
-    <span class="function">print</span>(<span class="string">"The sum is not a prime number."</span><span class="parentheses">)</span>
+<span class="comment"># Define a function to print out the lyrics to "The Ants Go Marching"</span>
+<span class="fun_keyword">def</span> <span class="function">ants_go_marching</span><span class="parentheses">(</span><span class="parentheses">)</span>:
+    <span class="fun_keyword">for</span> verse in <span class="function">range</span><span class="parentheses">(</span><span class="number">1</span>, <span class="number">11</span><span class="parentheses">)</span>:
+        <span class="function">print</span>(<span class="string">"The ants go marching"</span>, verse, <span class="string">"by"</span>, <span class="parameter">verse</span><span class="parentheses">)</span>
+        <span class="function">print</span>(<span class="string">"Hurrah! Hurrah!"</span><span class="parentheses">)</span>
+        <span class="function">print</span>(<span class="string">"The ants go marching"</span>, verse, <span class="string">"by"</span>, <span class="parameter">verse</span><span class="parentheses">)</span>
+        <span class="function">print</span>(<span class="string">"Hurrah! Hurrah!"</span><span class="parentheses">)</span>
+        <span class="function">print</span>(<span class="string">"The ants go marching"</span>, verse, <span class="string">"by"</span>, <span class="parameter">verse</span><span class="parentheses">)</span>
+        <span class="function">print</span>(<span class="string">"The little one stops to suck his thumb"</span><span class="parentheses">)</span>
+        <span class="function">print</span>(<span class="string">"And they all go marching down..."</span><span class="parentheses">)</span>
+    <span class="function">print</span>(<span class="string">"The ants go marching down...to the ground...to get out of the rain."</span><span class="parentheses">)</span>
+
+<span class="comment"># Main program</span>
+<span class="function">print</span>(<span class="string">"Welcome to the Function Funhouse!"</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Create a list of numbers and find the sum, average, and median</span>
+<span class="parameter">nums</span> = [<span class="number">12</span>, <span class="number">7</span>, <span class="number">19</span>, <span class="number">8</span>, <span class="number">15</span>, <span class="number">21</span>, <span class="number">4</span>]
+total = <span class="function">find_sum</span><span class="parentheses">(</span><span class="parameter">nums</span><span class="parentheses">)</span>
+average = <span class="function">find_avg</span><span class="parentheses">(</span><span class="parameter">nums</span><span class="parentheses">)</span>
+median = <span class="function">find_median</span><span class="parentheses">(</span><span class="parameter">nums</span><span class="parentheses">)</span>
+
+<span class="function">print</span>(f<span class="string">"The sum of the numbers is {total}."</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"The average of the numbers is {average:.2f}."</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"The median of the numbers is {median:.2f}."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Convert temperatures from Celsius to Fahrenheit and vice versa</span>
+<span class="parameter">temp_c</span> = <span class="number">27.5</span>
+temp_f = <span class="function">celsius_to_fahren</span><span class="parentheses">(</span><span class="parameter">temp_c</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"{temp_c:.1f} degrees Celsius is equal to {temp_f:.1f} degrees Fahrenheit."</span><span class="parentheses">)</span>
+
+<span class="parameter">temp_f</span> = <span class="number">80.6</span>
+temp_c = <span class="function">fahren_to_celsius</span><span class="parentheses">(</span><span class="parameter">temp_f</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"{temp_f:.1f} degrees Fahrenheit is equal to {temp_c:.1f} degrees Celsius."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Calculate the area of a triangle and the perimeter of a rectangle</span>
+<span class="parameter">base</span> = <span class="number">8</span>
+<span class="parameter">height</span> = <span class="number">5.2</span>
+tri_area = <span class="function">find_tri_area</span><span class="parentheses">(</span><span class="parameter">base</span>, <span class="parameter">height</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"The area of the triangle is {tri_area:.2f} square units."</span><span class="parentheses">)</span>
+
+<span class="parameter">width</span> = <span class="number">4.7</span>
+<span class="parameter">height</span> = <span class="number">9.3</span>
+rect_perimeter = <span class="function">find_rect_perimeter</span><span class="parentheses">(</span><span class="parameter">width</span>, <span class="parameter">height</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"The perimeter of the rectangle is {rect_perimeter:.2f} units."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Print out a multiplication table</span>
+<span class="function">print</span>(<span class="string">"Here is a multiplication table!"</span><span class="parentheses">)</span>
+<span class="function">mult_table</span><span class="parentheses">(</span><span class="number">10</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Check if numbers are prime</span>
+<span class="fun_keyword">for</span> num <span class="keyword">in</span> [<span class="number">3</span>, <span class="number">6</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">23</span>]:
+    <span class="fun_keyword">if</span> <span class="function">is_prime</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span>:
+        <span class="function">print</span>(num, <span class="string">"is prime."</span><span class="parentheses">)</span>
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(num, <span class="string">"is NOT prime."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Sing "The Ants Go Marching"</span>
+<span class="function">print</span>(<span class="string">"Let's sing 'The Ants Go Marching'!"</span><span class="parentheses">)</span>
+<span class="function">ants_go_marching</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
 </pre>
 </body>
 </html>

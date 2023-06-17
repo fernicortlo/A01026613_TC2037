@@ -20,29 +20,159 @@
 </head>
 <body>
 <pre>
-<span class="comment">#This is a Python program to calculate the factorial of a number</span>
+<span class="comment">#Sample Python code to test syntax highlighter</span>
+<span class="comment"># Arantza Parra Martínez and Maria Fernanda Cortes Lozano</span>
 
-<span class="comment">#This is a comment</span>
-<span class="fun_keyword">def</span> <span class="function">greet</span><span class="parentheses">(</span><span class="parameter">name</span><span class="parentheses">)</span>:
-    <span class="function">print</span>(<span class="string">"Hello, "</span> + name + <span class="string">"!"</span><span class="parentheses">)</span>
+<span class="comment"># Define a function to calculate the area of a rectangle</span>
+<span class="fun_keyword">def</span> <span class="function">calc_rect_area</span><span class="parentheses">(</span><span class="parameter">width</span>, <span class="parameter">height</span><span class="parentheses">)</span>:
+    <span class="keyword">return</span> <span class="parameter">width</span> * height
 
-<span class="fun_keyword">def</span> <span class="function">calculate_sum</span><span class="parentheses">(</span><span class="parameter">a</span>, <span class="parameter">b</span><span class="parentheses">)</span>:
-    <span class="keyword">return</span> <span class="parameter">a</span> + b
+<span class="comment"># Define a function to calculate the area of a circle</span>
+<span class="fun_keyword">def</span> <span class="function">calc_circle_area</span><span class="parentheses">(</span><span class="parameter">radius</span><span class="parentheses">)</span>:
+    <span class="parameter">pi</span> = <span class="number">3.14159</span>
+    <span class="keyword">return</span> <span class="parameter">pi</span> * <span class="parameter">radius</span> ** <span class="number">2</span>
 
-<span class="fun_keyword">def</span> <span class="function">is_prime</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span>:
-    <span class="fun_keyword">if</span> <span class="parameter">num</span> < <span class="number">2</span>:
+<span class="comment"># Define a function to calculate the volume of a rectangular prism</span>
+<span class="fun_keyword">def</span> <span class="function">calc_prism_volume</span><span class="parentheses">(</span><span class="parameter">width</span>, <span class="parameter">height</span>, <span class="parameter">depth</span><span class="parentheses">)</span>:
+    <span class="keyword">return</span> <span class="parameter">width</span> * <span class="parameter">height</span> * depth
+
+<span class="comment"># Define a function to calculate the surface area of a cube</span>
+<span class="fun_keyword">def</span> <span class="function">calc_cube_surface_area</span><span class="parentheses">(</span><span class="parameter">side_length</span><span class="parentheses">)</span>:
+    <span class="keyword">return</span> 6 * <span class="parameter">side_length</span> ** <span class="number">2</span>
+
+<span class="comment"># Define a function to calculate the perimeter of a triangle</span>
+<span class="fun_keyword">def</span> <span class="function">calc_tri_perimeter</span><span class="parentheses">(</span><span class="parameter">side1</span>, <span class="parameter">side2</span>, <span class="parameter">side3</span><span class="parentheses">)</span>:
+    <span class="keyword">return</span> <span class="parameter">side1</span> + <span class="parameter">side2</span> + side3
+
+<span class="comment"># Define a function to find the index of the maximum number in a list</span>
+<span class="fun_keyword">def</span> <span class="function">find_max_index</span><span class="parentheses">(</span><span class="parameter">lst</span><span class="parentheses">)</span>:
+    return lst.<span class="function">index</span>(<span class="function">max</span><span class="parentheses">(</span><span class="parameter">lst</span><span class="parentheses">)</span><span class="parentheses">)</span>
+
+<span class="comment"># Define a function to find the minimum number in a list</span>
+<span class="fun_keyword">def</span> <span class="function">find_min</span><span class="parentheses">(</span><span class="parameter">lst</span><span class="parentheses">)</span>:
+    return <span class="function">min</span><span class="parentheses">(</span><span class="parameter">lst</span><span class="parentheses">)</span>
+
+<span class="comment"># Define a function to sort a list in descending order</span>
+<span class="fun_keyword">def</span> <span class="function">sort_desc</span><span class="parentheses">(</span><span class="parameter">lst</span><span class="parentheses">)</span>:
+    return <span class="function">sorted</span><span class="parentheses">(</span><span class="parameter">lst</span>, reverse=<span class="parameter">True</span><span class="parentheses">)</span>
+
+<span class="comment"># Define a function to determine if a string is a palindrome</span>
+<span class="fun_keyword">def</span> <span class="function">is_palindrome</span><span class="parentheses">(</span><span class="parameter">word</span><span class="parentheses">)</span>:
+    <span class="keyword">return</span> <span class="parameter">word</span> == word[::-<span class="number">1</span>]
+
+<span class="comment"># Define a function to check if a given year is a leap year</span>
+<span class="fun_keyword">def</span> <span class="function">is_leap_year</span><span class="parentheses">(</span><span class="parameter">year</span><span class="parentheses">)</span>:
+    <span class="fun_keyword">if</span> (year % 4 == 0 <span class="keyword">and</span> year % 100 != 0) <span class="keyword">or</span> <span class="parameter">year</span> % <span class="number">400</span> == <span class="number">0</span>:
+        <span class="keyword">return</span> <span class="bool">True</span>
+    <span class="keyword">else</span>:
         <span class="keyword">return</span> <span class="bool">False</span>
-    <span class="fun_keyword">for</span> i in <span class="function">range</span>(2, <span class="function">int</span><span class="parentheses">(</span><span class="parameter">num</span> * <span class="number">0.5</span>) + <span class="number">1</span><span class="parentheses">)</span>:
-        <span class="fun_keyword">if</span> <span class="parameter">num</span> % <span class="parameter">i</span> == <span class="number">0</span>:
-            <span class="keyword">return</span> <span class="bool">False</span>
-    <span class="keyword">return</span> <span class="bool">True</span>
 
-<span class="parameter">x</span> = <span class="number">10</span>
-<span class="parameter">y</span> = <span class="number">5</span>
-z = <span class="function">calculate_sum</span><span class="parentheses">(</span><span class="parameter">x</span>, <span class="parameter">y</span><span class="parentheses">)</span>
-<span class="fun_keyword">if</span> <span class="function">is_prime</span><span class="parentheses">(</span><span class="parameter">z</span><span class="parentheses">)</span>:
-    <span class="function">greet</span>(<span class="string">"The sum is a prime number."</span><span class="parentheses">)</span>
+<span class="comment"># Define a function to print out the lyrics to "99 Bottles of Beer"</span>
+<span class="fun_keyword">def</span> <span class="function">ninety_nine_bottles</span><span class="parentheses">(</span><span class="parentheses">)</span>:
+    <span class="fun_keyword">for</span> i in <span class="function">range</span><span class="parentheses">(</span><span class="number">99</span>, <span class="number">0</span>, -<span class="number">1</span><span class="parentheses">)</span>:
+        <span class="fun_keyword">if</span> <span class="parameter">i</span> == <span class="number">1</span>:
+            <span class="function">print</span>(<span class="string">"1 bottle of beer on the wall,\n1 bottle of beer!"</span><span class="parentheses">)</span>
+            <span class="function">print</span>(<span class="string">"Take one down, pass it around,\nNo more bottles of beer on the wall!"</span><span class="parentheses">)</span>
+        <span class="keyword">else</span>:
+            <span class="function">print</span>(f<span class="string">"{i} bottles of beer on the wall,\n{i} bottles of beer!"</span><span class="parentheses">)</span>
+            <span class="function">print</span>(f<span class="string">"Take one down, pass it around,\n{i-1} bottles of beer on the wall!"</span><span class="parentheses">)</span>
+
+<span class="comment"># Define a function to calculate the nth Fibonacci number</span>
+<span class="fun_keyword">def</span> <span class="function">fib</span><span class="parentheses">(</span><span class="parameter">n</span><span class="parentheses">)</span>:
+    <span class="fun_keyword">if</span> <span class="parameter">n</span> <= <span class="number">1</span>:
+        <span class="keyword">return</span> n
+    <span class="keyword">else</span>:
+        <span class="function">return </span>(<span class="function">fib</span>(n-1) + <span class="function">fib</span><span class="parentheses">(</span>n-<span class="number">2</span><span class="parentheses">)</span><span class="parentheses">)</span>
+
+<span class="comment"># Main program</span>
+<span class="function">print</span>(<span class="string">"Welcome to the Function Fun app!"</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Get user input for rectangle dimensions</span>
+<span class="function">print</span>(<span class="string">"Please enter the width and height of your rectangle:"</span><span class="parentheses">)</span>
+width = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Width: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
+height = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Height: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
+
+<span class="comment"># Calculate and display the rectangle area</span>
+rect_area = <span class="function">calc_rect_area</span><span class="parentheses">(</span><span class="parameter">width</span>, <span class="parameter">height</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"The area of your rectangle is {rect_area:.2f}."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Get user input for circle radius</span>
+radius = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Please enter the radius of your circle: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
+
+<span class="comment"># Calculate and display the circle area</span>
+circle_area = <span class="function">calc_circle_area</span><span class="parentheses">(</span><span class="parameter">radius</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"The area of your circle is {circle_area:.2f}."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Get user input for rectangular prism dimensions</span>
+<span class="function">print</span>(<span class="string">"Please enter the width, height, and depth of your rectangular prism:"</span><span class="parentheses">)</span>
+width = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Width: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
+height = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Height: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
+depth = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Depth: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
+
+<span class="comment"># Calculate and display the rectangular prism volume</span>
+prism_volume = <span class="function">calc_prism_volume</span><span class="parentheses">(</span><span class="parameter">width</span>, <span class="parameter">height</span>, <span class="parameter">depth</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"The volume of your rectangular prism is {prism_volume:.2f}."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Get user input for cube side length</span>
+side_length = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Please enter the length of a side of your cube: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
+
+<span class="comment"># Calculate and display the cube surface area</span>
+cube_surface_area = <span class="function">calc_cube_surface_area</span><span class="parentheses">(</span><span class="parameter">side_length</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"The surface area of your cube is {cube_surface_area:.2f}."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Get user input for triangle side lengths</span>
+<span class="function">print</span>(<span class="string">"Please enter the lengths of your triangle's three sides:"</span><span class="parentheses">)</span>
+side1 = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Side 1: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
+side2 = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Side 2: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
+side3 = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Side 3: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
+
+<span class="comment"># Calculate and display the triangle perimeter</span>
+tri_perimeter = <span class="function">calc_tri_perimeter</span><span class="parentheses">(</span><span class="parameter">side1</span>, <span class="parameter">side2</span>, <span class="parameter">side3</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"The perimeter of your triangle is {tri_perimeter:.2f}."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Create a list of numbers and find the maximum index, minimum value, and descending sort</span>
+<span class="parameter">nums</span> = [<span class="number">5</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">21</span>, <span class="number">4</span>]
+max_index = <span class="function">find_max_index</span><span class="parentheses">(</span><span class="parameter">nums</span><span class="parentheses">)</span>
+min_val = <span class="function">find_min</span><span class="parentheses">(</span><span class="parameter">nums</span><span class="parentheses">)</span>
+sorted_nums = <span class="function">sort_desc</span><span class="parentheses">(</span><span class="parameter">nums</span><span class="parentheses">)</span>
+
+<span class="function">print</span>(f<span class="string">"The maximum number in this list is at index {max_index}."</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"The minimum number in this list is {min_val}."</span><span class="parentheses">)</span>
+<span class="function">print</span>(f<span class="string">"The list sorted in descending order is {sorted_nums}."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Check if a string is a palindrome</span>
+word = <span class="string">"racecar"</span>
+<span class="fun_keyword">if</span> <span class="function">is_palindrome</span><span class="parentheses">(</span><span class="parameter">word</span><span class="parentheses">)</span>:
+    <span class="function">print</span>(f<span class="string">"{word} is a palindrome!"</span><span class="parentheses">)</span>
 <span class="keyword">else</span>:
-    <span class="function">print</span>(<span class="string">"The sum is not a prime number."</span><span class="parentheses">)</span></pre>
+    <span class="function">print</span>(f<span class="string">"{word} is NOT a palindrome."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Check if a year is a leap year</span>
+<span class="parameter">year</span> = <span class="number">2020</span>
+<span class="fun_keyword">if</span> <span class="function">is_leap_year</span><span class="parentheses">(</span><span class="parameter">year</span><span class="parentheses">)</span>:
+    <span class="function">print</span>(f<span class="string">"{year} is a leap year!"</span><span class="parentheses">)</span>
+<span class="keyword">else</span>:
+    <span class="function">print</span>(f<span class="string">"{year} is NOT a leap year."</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Print out the lyrics to "99 Bottles of Beer"</span>
+<span class="function">print</span>(<span class="string">"Let's sing '99 Bottles of Beer'!"</span><span class="parentheses">)</span>
+<span class="function">ninety_nine_bottles</span><span class="parentheses">(</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+
+<span class="comment"># Calculate the first 10 Fibonacci numbers</span>
+<span class="function">print</span>(<span class="string">"The first 10 Fibonacci numbers are:"</span><span class="parentheses">)</span>
+<span class="fun_keyword">for</span> i in <span class="function">range</span><span class="parentheses">(</span><span class="number">10</span><span class="parentheses">)</span>:
+    <span class="function">print</span>(<span class="function">fib</span>(i), end=<span class="string">' '</span><span class="parentheses">)</span>
+<span class="function">print</span><span class="parentheses">(</span><span class="parentheses">)</span>
+</pre>
 </body>
 </html>

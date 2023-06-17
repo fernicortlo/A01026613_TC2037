@@ -20,25 +20,124 @@
 </head>
 <body>
 <pre>
+<span class="comment"># Sample Python code to test syntax highlighter</span>
+<span class="comment"># Author: Arantza Parra Martínez and Maria Fernanda Cortes Lozano</span>
+<span class="keyword">import</span> math
+<span class="keyword">import</span> random
 
-<span class="comment"># Iterative program to invert the digits in an integer number</span>
+<span class="comment"># Define constants</span>
+<span class="parameter">MAX</span> = <span class="number">100</span>
+<span class="parameter">MIN</span> = <span class="number">0</span>
 
-<span class="comment"># Created by Gilberto Echeverria</span>
-<span class="comment"># 2021-09-02</span>
+<span class="fun_keyword">def</span> <span class="function">check_prime</span><span class="parentheses">(</span><span class="parameter">number</span><span class="parentheses">)</span>:
+    """Check <span class="fun_keyword">if</span> a number is a prime number<span class="string">""</span>"
+    <span class="fun_keyword">if</span> <span class="parameter">number</span> < <span class="number">2</span>:
+        <span class="keyword">return</span> <span class="bool">False</span>
+    <span class="fun_keyword">for</span> element in <span class="function">range</span>(2, math.<span class="function">isqrt</span><span class="parentheses">(</span><span class="parameter">number</span>) + <span class="number">1</span><span class="parentheses">)</span>:
+        <span class="fun_keyword">if</span> <span class="parameter">number</span> % <span class="parameter">element</span> == <span class="number">0</span>:
+            <span class="keyword">return</span> <span class="bool">False</span>
+    <span class="keyword">return</span> <span class="bool">True</span>
 
-<span class="fun_keyword">def</span> <span class="function">invert_number</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span>:
-    <span class="parameter">result</span> = <span class="number">0</span>
-    <span class="keyword">while</span> <span class="parameter">num</span> > <span class="number">0</span>:
-        <span class="parameter">result</span> = <span class="parameter">result</span> * 10 + <span class="parameter">num</span> % <span class="number">10</span>
-        <span class="parameter">num</span> //= <span class="number">10</span>
-    <span class="keyword">return</span> result
+<span class="fun_keyword">def</span> <span class="function">list_primes</span><span class="parentheses">(</span><span class="parameter">n</span><span class="parentheses">)</span>:
+    <span class="string">""</span><span class="string">"List the first n prime numbers"</span><span class="string">""</span>
+    <span class="parameter">primes</span> = []
+    <span class="parameter">i</span> = <span class="number">2</span>
+    while <span class="function">len</span><span class="parentheses">(</span><span class="parameter">primes</span>) < <span class="parameter">n</span>:
+        <span class="fun_keyword">if</span> <span class="function">check_prime</span><span class="parentheses">(</span><span class="parameter">i</span><span class="parentheses">)</span>:
+            primes.<span class="function">append</span><span class="parentheses">(</span><span class="parameter">i</span><span class="parentheses">)</span>
+        <span class="parameter">i</span> += <span class="number">1</span>
+    <span class="keyword">return</span> primes
 
+<span class="fun_keyword">def</span> <span class="function">calculate_average</span><span class="parentheses">(</span><span class="parameter">numbers</span><span class="parentheses">)</span>:
+    <span class="string">""</span><span class="string">"Calculate the average of a list of numbers"</span><span class="string">""</span>
+    <span class="fun_keyword">if</span> <span class="keyword">not</span> <span class="parameter">numbers</span>:
+        <span class="keyword">return</span> None
+    return <span class="function">sum</span>(numbers) / <span class="function">len</span><span class="parentheses">(</span><span class="parameter">numbers</span><span class="parentheses">)</span>
 
-<span class="fun_keyword">def</span> <span class="function">main</span><span class="parentheses">(</span><span class="parentheses">)</span>:
-    num = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter a number: "</span><span class="parentheses">)</span><span class="parentheses">)</span>
-    <span class="function">print</span>(<span class="function">invert_number</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span><span class="parentheses">)</span>
+<span class="fun_keyword">def</span> <span class="function">roll_dice</span><span class="parentheses">(</span><span class="parentheses">)</span>:
+    <span class="string">""</span><span class="string">"Simulate rolling a six-sided dice"</span><span class="string">""</span>
+    return random.<span class="function">randint</span><span class="parentheses">(</span><span class="number">1</span>, <span class="number">6</span><span class="parentheses">)</span>
 
+<span class="fun_keyword">def</span> <span class="function">simulate_dice_rolls</span><span class="parentheses">(</span><span class="parameter">n</span><span class="parentheses">)</span>:
+    <span class="string">""</span><span class="string">"Simulate n dice rolls and return their average"</span><span class="string">""</span>
+    rolls = [roll_dice() <span class="fun_keyword">for</span> _ in <span class="function">range</span><span class="parentheses">(</span><span class="parameter">n</span><span class="parentheses">)</span>]
+    return <span class="function">calculate_average</span><span class="parentheses">(</span><span class="parameter">rolls</span><span class="parentheses">)</span>
 
-<span class="function">main</span><span class="parentheses">(</span><span class="parentheses">)</span></pre>
+<span class="comment"># Test check_prime function</span>
+<span class="fun_keyword">for</span> num in <span class="function">range</span><span class="parentheses">(</span><span class="number">1</span>, <span class="number">101</span><span class="parentheses">)</span>:
+    <span class="function">print</span>(f"{num} is a prime number: {<span class="function">check_prime</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span>}"<span class="parentheses">)</span>
+
+<span class="comment"># Test list_primes function</span>
+<span class="fun_keyword">for</span> i in <span class="function">range</span><span class="parentheses">(</span><span class="number">1</span>, <span class="number">101</span><span class="parentheses">)</span>:
+    <span class="function">print</span>(f"The first {i} prime numbers are: {<span class="function">list_primes</span><span class="parentheses">(</span><span class="parameter">i</span><span class="parentheses">)</span>}"<span class="parentheses">)</span>
+
+<span class="comment"># Test calculate_average function</span>
+<span class="fun_keyword">for</span> i in <span class="function">range</span><span class="parentheses">(</span><span class="number">1</span>, <span class="number">101</span><span class="parentheses">)</span>:
+    <span class="function">print</span>(f"The average of the first {i} numbers is {<span class="function">calculate_average</span>(<span class="function">list</span>(<span class="function">range</span><span class="parentheses">(</span>1, <span class="parameter">i</span> + <span class="number">1</span><span class="parentheses">)</span><span class="parentheses">)</span><span class="parentheses">)</span>}"<span class="parentheses">)</span>
+
+<span class="comment"># Test roll_dice and simulate_dice_rolls function</span>
+<span class="fun_keyword">for</span> i in <span class="function">range</span><span class="parentheses">(</span><span class="number">1</span>, <span class="number">101</span><span class="parentheses">)</span>:
+    <span class="function">print</span>(f"Rolling a dice: {<span class="function">roll_dice</span><span class="parentheses">(</span><span class="parentheses">)</span>}"<span class="parentheses">)</span>
+    <span class="function">print</span>(f"Simulating {i} dice rolls: {<span class="function">simulate_dice_rolls</span><span class="parentheses">(</span><span class="parameter">i</span><span class="parentheses">)</span>}"<span class="parentheses">)</span>
+
+<span class="comment"># Adding new lines to the code</span>
+<span class="fun_keyword">for</span> i in <span class="function">range</span><span class="parentheses">(</span><span class="number">1</span>, <span class="number">101</span><span class="parentheses">)</span>:
+    <span class="function">print</span>(f<span class="string">"Square of {i}: {i**2}"</span><span class="parentheses">)</span>
+    <span class="function">print</span>(f<span class="string">"Cube of {i}: {i**3}"</span><span class="parentheses">)</span>
+    <span class="function">print</span>(f"Random number between 1 and {i}: {random.<span class="function">randint</span><span class="parentheses">(</span>1, <span class="parameter">i</span><span class="parentheses">)</span>}"<span class="parentheses">)</span>
+    <span class="function">print</span>(f"Is {i} a prime number? {<span class="function">check_prime</span><span class="parentheses">(</span><span class="parameter">i</span><span class="parentheses">)</span>}"<span class="parentheses">)</span>
+    <span class="function">print</span>(f"First {i} prime numbers: {<span class="function">list_primes</span><span class="parentheses">(</span><span class="parameter">i</span><span class="parentheses">)</span>}"<span class="parentheses">)</span>
+    <span class="function">print</span>(f"Average of first {i} numbers: {<span class="function">calculate_average</span>(<span class="function">list</span>(<span class="function">range</span><span class="parentheses">(</span>1, <span class="parameter">i</span> + <span class="number">1</span><span class="parentheses">)</span><span class="parentheses">)</span><span class="parentheses">)</span>}"<span class="parentheses">)</span>
+
+<span class="fun_keyword">def</span> <span class="function">check_square</span><span class="parentheses">(</span><span class="parameter">number</span><span class="parentheses">)</span>:
+    """Check <span class="fun_keyword">if</span> a number is a perfect square<span class="string">""</span>"
+    return True <span class="fun_keyword">if</span> <span class="function">int</span>(math.<span class="function">sqrt</span>(number))**2 == number <span class="keyword">else</span> <span class="bool">False</span>
+
+<span class="fun_keyword">def</span> <span class="function">shuffle_list</span><span class="parentheses">(</span><span class="parameter">lst</span><span class="parentheses">)</span>:
+    <span class="string">""</span><span class="string">"Shuffle a given list and return the shuffled list"</span><span class="string">""</span>
+    random.<span class="function">shuffle</span><span class="parentheses">(</span><span class="parameter">lst</span><span class="parentheses">)</span>
+    <span class="keyword">return</span> lst
+
+<span class="fun_keyword">def</span> <span class="function">calculate_variance</span><span class="parentheses">(</span><span class="parameter">numbers</span><span class="parentheses">)</span>:
+    <span class="string">""</span><span class="string">"Calculate the variance of a list of numbers"</span><span class="string">""</span>
+    <span class="fun_keyword">if</span> <span class="keyword">not</span> <span class="parameter">numbers</span>:
+        <span class="keyword">return</span> None
+    mean = <span class="function">sum</span>(numbers) / <span class="function">len</span><span class="parentheses">(</span><span class="parameter">numbers</span><span class="parentheses">)</span>
+    return sum((x - mean) ** 2 <span class="fun_keyword">for</span> x in numbers) / <span class="function">len</span><span class="parentheses">(</span><span class="parameter">numbers</span><span class="parentheses">)</span>
+
+<span class="fun_keyword">def</span> <span class="function">generate_random_password</span><span class="parentheses">(</span><span class="parameter">n</span><span class="parentheses">)</span>:
+    <span class="string">""</span><span class="string">"Generate a random password of length n"</span><span class="string">""</span>
+    characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@<span class="comment">#$%^&*()_+-="</span>
+    password = <span class="string">""</span>
+    <span class="fun_keyword">for</span> i in <span class="function">range</span><span class="parentheses">(</span><span class="parameter">n</span><span class="parentheses">)</span>:
+        password += random.<span class="function">choice</span><span class="parentheses">(</span><span class="parameter">characters</span><span class="parentheses">)</span>
+    <span class="keyword">return</span> password
+
+<span class="fun_keyword">def</span> <span class="function">count_vowels</span><span class="parentheses">(</span><span class="parameter">word</span><span class="parentheses">)</span>:
+    <span class="string">""</span><span class="string">"Count the number of vowels in a word"</span><span class="string">""</span>
+    vowels = <span class="string">"aeiouAEIOU"</span>
+    <span class="parameter">count</span> = <span class="number">0</span>
+    <span class="fun_keyword">for</span> letter <span class="keyword">in</span> <span class="parameter">word</span>:
+        <span class="fun_keyword">if</span> letter <span class="keyword">in</span> <span class="parameter">vowels</span>:
+            <span class="parameter">count</span> += <span class="number">1</span>
+    <span class="keyword">return</span> count
+
+<span class="fun_keyword">def</span> <span class="function">reverse_list</span><span class="parentheses">(</span><span class="parameter">lst</span><span class="parentheses">)</span>:
+    <span class="string">""</span><span class="string">"Reverse a given list and return the reversed list"</span><span class="string">""</span>
+    <span class="keyword">return</span> lst[::-<span class="number">1</span>]
+
+<span class="fun_keyword">def</span> <span class="function">calculate_factorial</span><span class="parentheses">(</span><span class="parameter">num</span><span class="parentheses">)</span>:
+    <span class="string">""</span><span class="string">"Calculate the factorial of a non-negative integer"</span><span class="string">""</span>
+    <span class="fun_keyword">if</span> <span class="parameter">num</span> < <span class="number">0</span>:
+        <span class="keyword">return</span> None
+    <span class="keyword">elif</span> <span class="parameter">num</span> == <span class="number">0</span>:
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">else</span>:
+        return num * <span class="function">calculate_factorial</span><span class="parentheses">(</span><span class="parameter">num</span> - <span class="number">1</span><span class="parentheses">)</span>
+
+<span class="fun_keyword">def</span> <span class="function">capitalize_first_letter</span><span class="parentheses">(</span><span class="parameter">word</span><span class="parentheses">)</span>:
+    <span class="string">""</span><span class="string">"Capitalize the first letter of a given word"</span><span class="string">""</span>
+    return word.<span class="function">capitalize</span><span class="parentheses">(</span><span class="parentheses">)</span>
+</pre>
 </body>
 </html>
