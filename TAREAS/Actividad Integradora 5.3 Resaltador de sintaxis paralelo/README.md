@@ -43,4 +43,11 @@ In comparison to a version of the code that processes the files sequentially, th
 It's also important to note that in addition to improving the time efficiency, the use of parallel processing can also lead to better utilization of system resources. This is particularly relevant in a multi-core environment, where a sequential program would only be able to utilize a single core at a time.
 
 While this analysis provides a good insight into the performance of the highlight_files function, it's always a good idea to perform further testing and optimization based on the specific needs and constraints of your application.
-
+ ### <span style = "color: lightgreen;"> Ethical Implications </span>
+As shared in the report, a syntax highlighter does have some ethical implications where we need to be careful in how we use the technology. Some of those implications included:
+- Protection of data: being really careful with the data inside the input files that the highlighter receives
+- Accountability for the code: Being sure that the syntax highlighter does identify the elements of the code correctly.
+Now that Parallel programming is being added to the equation, it is important to take some other factors into consideration.
+The first being that now that we are working with multiple files simultaneously, the risk of the other factors being violated increases since it is harder to keep track. So, it is important that the correct measures are taken to protect them.
+Additionally, there is another factor to now consider:
+Parallel programming uses a lot of energy, which could lead to more energy consumption. This could have a negative impact on the environment. It is important to be aware of how the technologies chosen can have an environmental impact and try to reduce it.
