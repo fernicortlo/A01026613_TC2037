@@ -51,7 +51,7 @@ defmodule SyntaxHighlighter do
  # Define a list where the regex pattern is matched to a css class previously defined
           tokens = [
             {~r/#(.*)$/, "comment"},
-            {~r/\b(def|for|if)\b/, "fun_keyword"},
+            {~r/\b(retun|def|for|if)\b/, "fun_keyword"},
             {~r/\b([a-zA-Z_]\w*)\s*(?=\s*\()/, "function"},
             {~r/("[^"]*")|('[^']*')/, "string"},
             {~r/\b(return|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not)\b/, "keyword"},
@@ -61,20 +61,7 @@ defmodule SyntaxHighlighter do
             {~r/\)/, "parentheses"},
             {~r/\b(True|False)\b/, "bool"},
           ]
-          # tokens = [
-          # {~r/("[^"]*")|('[^']*')/, "string"},
-          # {~r/\b(def|if|for)\b/, "keyword"},
-          # {~r/\b([a-zA-Z_]\w*)\b\s*(?=\s*\()/, "function"},
-          # {~r/\b([a-zA-Z_]\w*)\b(?=\s*(?:,|\)|:))/, "parameter"},
-          # {~r/(?<=\s|^)([a-zA-Z_]\w*)(?=\s*=)/, "parameter"},
-          # {~r/#(.*)$/, "comment"},
-          # {~r/\(/, "parentheses"},
-          # {~r/\b(def|return|if|while|pass|else|elif|import|from|as|try|except|finally|raise|and|or|is|in|not)\b/, "keyword"},
-          # {~r/(\+\+|\-\-|\*|\/|\/\/|\*\*|\%|==|!=|<=|\œ>=|=|&|\^|>>|<<|<|>|,|:)/, "operator"},
-          # {~r/\b\d+(\.\d+)?\b/, "number"},
-          # {~r/\)/, "parentheses"},
-          # {~r/\b(True|False)\b/, "bool"},
-          # ]
+
     # Apply the functuon do_tokens to each line of code
     processed_lines = Enum.map(lines, fn line ->
     do_tokens(line, tokens)
@@ -97,13 +84,14 @@ defmodule SyntaxHighlighter do
           head <> "<span class=\"#{class}\">#{List.first(tail)}</span>" <> do_tokens(List.to_string(tail -- [List.first(tail)]), token_list)
       end
     end
-    # List of input and output files
+
   @file_pairs [
     {"Test1.py", "highlighter.html"},
     {"Test2.py", "highlighter_2.html"},
     {"Test3.py", "highlighter_3.html"},
 
   ]
+
   def ranges(files) do
     cores = max(System.schedulers_online(), 1)
     chunk_size = max(div(Enum.count(files), cores), 1)
