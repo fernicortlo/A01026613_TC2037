@@ -34,7 +34,7 @@ For the highlighting function using parallel programing, the time obtained is:
 
 If we calculate the average we get 0.0252 seconds. 
 
-The average execution time of 0.057 seconds demonstrates the power of parallel processing. It's important to note that the actual time will depend on many factors such as the complexity and size of the files, the number of tokens to match, and the number of cores in the system.
+The average execution time of 0.0252 seconds demonstrates the power of parallel processing. It's important to note that the actual time will depend on many factors such as the complexity and size of the files, the number of tokens to match, and the number of cores in the system.
 
 However, by splitting the workload across multiple cores, the highlight_files function is able to process multiple files concurrently, which can significantly improve the time efficiency when dealing with large numbers of files.
 
